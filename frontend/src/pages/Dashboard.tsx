@@ -1173,236 +1173,219 @@ I wear my blue Superman hoodie and red cape while patrolling your campus telemet
 
 
 
-      {/* 8 Clickable Metric Cards with Count-Up Animations & Glassmorphic Transparency */}
-      <div className="relative rounded-3xl p-5 sm:p-6 bg-gradient-to-br from-indigo-500/[0.06] via-sky-500/[0.03] to-purple-500/[0.06] border border-white/80 shadow-lg shadow-indigo-500/5 backdrop-blur-xl overflow-hidden">
-        {/* Ambient colorful light sources radiating directly under the dashboard metric cards */}
-        <div className="absolute -top-12 left-12 w-96 h-96 bg-blue-500/15 rounded-full blur-3xl pointer-events-none -z-10 animate-pulse" style={{ animationDuration: '8s' }} />
-        <div className="absolute -bottom-12 right-12 w-96 h-96 bg-purple-500/15 rounded-full blur-3xl pointer-events-none -z-10 animate-pulse" style={{ animationDuration: '10s' }} />
-        
-        {/* Top reflective glare */}
-        <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/80 to-transparent pointer-events-none" />
-
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 relative z-10">
-          {/* 1. Total Students */}
-          <div
-            onClick={() => openDrilldown('total_students')}
-            className="dashboard-glass-card p-4.5 sm:p-5 rounded-2xl shadow-xs interactive-card cursor-pointer group active:scale-95 animate-slide-up delay-50 relative overflow-hidden"
-          >
-            <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/80 to-transparent pointer-events-none" />
-            <div className="flex items-center justify-between">
-              <span className="text-sm sm:text-base font-black text-slate-900 tracking-wide group-hover:text-indigo-600 transition-colors">
-                Total Students
-              </span>
-              <div className="p-2 rounded-xl bg-indigo-100/80 backdrop-blur-xs group-hover:bg-indigo-200 transition-colors">
-                <Users className="w-5 h-5 text-indigo-700 group-hover:scale-110 transition-transform" />
-              </div>
-            </div>
-            <div className="text-3xl sm:text-4xl font-black text-slate-950 mt-1.5 tracking-tight group-hover:text-indigo-700 transition-colors">
-              <CountUp value={cards.total_students} />
-            </div>
-            <div className="flex items-center justify-between mt-2 pt-1.5 border-t border-slate-200/50 text-xs font-bold text-slate-800">
-              <span className="flex items-center gap-1.5">
-                <span className="w-2 h-2 rounded-full bg-indigo-600 inline-block" />
-                Active Monitored Cohort
-              </span>
-              <span className="text-indigo-700 font-black opacity-0 group-hover:opacity-100 transition-all duration-200 flex items-center transform group-hover:translate-x-0.5">
-                &rarr;
-              </span>
+      {/* 8 Clickable Metric Cards with Count-Up Animations & Bold, High-Contrast Typography */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        {/* 1. Total Students */}
+        <div
+          onClick={() => openDrilldown('total_students')}
+          className="bg-white p-4.5 sm:p-5 rounded-2xl border-2 border-slate-200/90 shadow-xs hover:shadow-lg hover:border-indigo-400 hover-glow-indigo interactive-card cursor-pointer group active:scale-95 animate-slide-up delay-50"
+        >
+          <div className="flex items-center justify-between">
+            <span className="text-sm sm:text-base font-black text-slate-900 tracking-wide group-hover:text-indigo-600 transition-colors">
+              Total Students
+            </span>
+            <div className="p-2 rounded-xl bg-indigo-100 group-hover:bg-indigo-200 transition-colors">
+              <Users className="w-5 h-5 text-indigo-700 group-hover:scale-110 transition-transform" />
             </div>
           </div>
+          <div className="text-3xl sm:text-4xl font-black text-slate-950 mt-1.5 tracking-tight group-hover:text-indigo-700 transition-colors">
+            <CountUp value={cards.total_students} />
+          </div>
+          <div className="flex items-center justify-between mt-2 pt-1.5 border-t border-slate-200 text-xs font-bold text-slate-800">
+            <span className="flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full bg-indigo-600 inline-block" />
+              Active Monitored Cohort
+            </span>
+            <span className="text-indigo-700 font-black opacity-0 group-hover:opacity-100 transition-all duration-200 flex items-center transform group-hover:translate-x-0.5">
+              &rarr;
+            </span>
+          </div>
+        </div>
 
-          {/* 2. Active Alerts */}
-          <div
-            onClick={() => openDrilldown('active_alerts')}
-            className="dashboard-glass-card p-4.5 sm:p-5 rounded-2xl shadow-xs interactive-card cursor-pointer group active:scale-95 animate-slide-up delay-100 relative overflow-hidden"
-          >
-            <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/80 to-transparent pointer-events-none" />
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-1.5">
-                <span className="text-sm sm:text-base font-black text-amber-950 tracking-wide group-hover:text-amber-700 transition-colors">
-                  Active Alerts
-                </span>
-                <span className="relative flex h-2.5 w-2.5">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-500 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-amber-600"></span>
-                </span>
-              </div>
-              <div className="p-2 rounded-xl bg-amber-100/80 backdrop-blur-xs group-hover:bg-amber-200 transition-colors">
-                <AlertTriangle className="w-5 h-5 text-amber-600 group-hover:scale-110 transition-transform" />
-              </div>
-            </div>
-            <div className="text-3xl sm:text-4xl font-black text-amber-600 mt-1.5 tracking-tight">
-              <CountUp value={cards.active_alerts} />
-            </div>
-            <div className="flex items-center justify-between mt-2 pt-1.5 border-t border-amber-200/50 text-xs font-black text-amber-900">
-              <span className="flex items-center gap-1">
-                <span>&uarr; Live Radar</span>
-                <span className="text-[11px] text-amber-800 font-extrabold">(Action Needed)</span>
+        {/* 2. Active Alerts */}
+        <div
+          onClick={() => openDrilldown('active_alerts')}
+          className="bg-white p-4.5 sm:p-5 rounded-2xl border-2 border-amber-200 shadow-xs hover:shadow-lg hover:border-amber-400 hover-glow-amber interactive-card cursor-pointer group active:scale-95 animate-slide-up delay-100"
+        >
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-1.5">
+              <span className="text-sm sm:text-base font-black text-amber-950 tracking-wide group-hover:text-amber-700 transition-colors">
+                Active Alerts
               </span>
-              <span className="opacity-0 group-hover:opacity-100 transition-all duration-200 font-black transform group-hover:translate-x-0.5">
-                &rarr;
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-500 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-amber-600"></span>
               </span>
+            </div>
+            <div className="p-2 rounded-xl bg-amber-100 group-hover:bg-amber-200 transition-colors">
+              <AlertTriangle className="w-5 h-5 text-amber-600 group-hover:scale-110 transition-transform" />
             </div>
           </div>
+          <div className="text-3xl sm:text-4xl font-black text-amber-600 mt-1.5 tracking-tight">
+            <CountUp value={cards.active_alerts} />
+          </div>
+          <div className="flex items-center justify-between mt-2 pt-1.5 border-t border-amber-100 text-xs font-black text-amber-900">
+            <span className="flex items-center gap-1">
+              <span>&uarr; Live Radar</span>
+              <span className="text-[11px] text-amber-800 font-extrabold">(Action Needed)</span>
+            </span>
+            <span className="opacity-0 group-hover:opacity-100 transition-all duration-200 font-black transform group-hover:translate-x-0.5">
+              &rarr;
+            </span>
+          </div>
+        </div>
 
-          {/* 3. High Severity */}
-          <div
-            onClick={() => openDrilldown('high_severity')}
-            className="dashboard-glass-card p-4.5 sm:p-5 rounded-2xl shadow-xs interactive-card cursor-pointer group active:scale-95 animate-slide-up delay-150 relative overflow-hidden"
-          >
-            <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/80 to-transparent pointer-events-none" />
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-1.5">
-                <span className="text-sm sm:text-base font-black text-rose-950 tracking-wide group-hover:text-rose-700 transition-colors">
-                  High Severity
-                </span>
-                <span className="relative flex h-2.5 w-2.5">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-500 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-rose-600"></span>
-                </span>
-              </div>
-              <div className="p-2 rounded-xl bg-rose-100/80 backdrop-blur-xs group-hover:bg-rose-200 transition-colors">
-                <ShieldAlert className="w-5 h-5 text-rose-600 group-hover:scale-110 transition-transform" />
-              </div>
-            </div>
-            <div className="text-3xl sm:text-4xl font-black text-rose-600 mt-1.5 tracking-tight">
-              <CountUp value={cards.high_severity} />
-            </div>
-            <div className="flex items-center justify-between mt-2 pt-1.5 border-t border-rose-200/50 text-xs font-black text-rose-900">
-              <span className="flex items-center gap-1.5">
-                <Zap className="w-3.5 h-3.5 text-rose-600 fill-rose-600" />
-                <span>Critical SLA (&lt;24h)</span>
+        {/* 3. High Severity */}
+        <div
+          onClick={() => openDrilldown('high_severity')}
+          className="bg-white p-4.5 sm:p-5 rounded-2xl border-2 border-rose-200 shadow-xs hover:shadow-lg hover:border-rose-400 hover-glow-rose interactive-card cursor-pointer group active:scale-95 animate-slide-up delay-150"
+        >
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-1.5">
+              <span className="text-sm sm:text-base font-black text-rose-950 tracking-wide group-hover:text-rose-700 transition-colors">
+                High Severity
               </span>
-              <span className="opacity-0 group-hover:opacity-100 transition-all duration-200 font-black transform group-hover:translate-x-0.5">
-                &rarr;
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-500 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-rose-600"></span>
               </span>
+            </div>
+            <div className="p-2 rounded-xl bg-rose-100 group-hover:bg-rose-200 transition-colors">
+              <ShieldAlert className="w-5 h-5 text-rose-600 group-hover:scale-110 transition-transform" />
             </div>
           </div>
+          <div className="text-3xl sm:text-4xl font-black text-rose-600 mt-1.5 tracking-tight">
+            <CountUp value={cards.high_severity} />
+          </div>
+          <div className="flex items-center justify-between mt-2 pt-1.5 border-t border-rose-100 text-xs font-black text-rose-900">
+            <span className="flex items-center gap-1.5">
+              <Zap className="w-3.5 h-3.5 text-rose-600 fill-rose-600" />
+              <span>Critical SLA (&lt;24h)</span>
+            </span>
+            <span className="opacity-0 group-hover:opacity-100 transition-all duration-200 font-black transform group-hover:translate-x-0.5">
+              &rarr;
+            </span>
+          </div>
+        </div>
 
-          {/* 4. Awaiting Response */}
-          <div
-            onClick={() => openDrilldown('awaiting_response')}
-            className="dashboard-glass-card p-4.5 sm:p-5 rounded-2xl shadow-xs interactive-card cursor-pointer group active:scale-95 animate-slide-up delay-200 relative overflow-hidden"
-          >
-            <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/80 to-transparent pointer-events-none" />
-            <div className="flex items-center justify-between">
-              <span className="text-sm sm:text-base font-black text-indigo-950 tracking-wide group-hover:text-indigo-700 transition-colors">
-                Awaiting Response
-              </span>
-              <div className="p-2 rounded-xl bg-indigo-100/80 backdrop-blur-xs group-hover:bg-indigo-200 transition-colors">
-                <Clock className="w-5 h-5 text-indigo-600 group-hover:scale-110 transition-transform" />
-              </div>
-            </div>
-            <div className="text-3xl sm:text-4xl font-black text-indigo-600 mt-1.5 tracking-tight">
-              <CountUp value={cards.awaiting_response} />
-            </div>
-            <div className="flex items-center justify-between mt-2 pt-1.5 border-t border-indigo-200/50 text-xs font-black text-indigo-900">
-              <span className="flex items-center gap-1">
-                <span>&bull; Unacknowledged Queue</span>
-              </span>
-              <span className="opacity-0 group-hover:opacity-100 transition-all duration-200 font-black transform group-hover:translate-x-0.5">
-                &rarr;
-              </span>
+        {/* 4. Awaiting Response */}
+        <div
+          onClick={() => openDrilldown('awaiting_response')}
+          className="bg-white p-4.5 sm:p-5 rounded-2xl border-2 border-indigo-200 shadow-xs hover:shadow-lg hover:border-indigo-400 hover-glow-indigo interactive-card cursor-pointer group active:scale-95 animate-slide-up delay-200"
+        >
+          <div className="flex items-center justify-between">
+            <span className="text-sm sm:text-base font-black text-indigo-950 tracking-wide group-hover:text-indigo-700 transition-colors">
+              Awaiting Response
+            </span>
+            <div className="p-2 rounded-xl bg-indigo-100 group-hover:bg-indigo-200 transition-colors">
+              <Clock className="w-5 h-5 text-indigo-600 group-hover:scale-110 transition-transform" />
             </div>
           </div>
+          <div className="text-3xl sm:text-4xl font-black text-indigo-600 mt-1.5 tracking-tight">
+            <CountUp value={cards.awaiting_response} />
+          </div>
+          <div className="flex items-center justify-between mt-2 pt-1.5 border-t border-indigo-100 text-xs font-black text-indigo-900">
+            <span className="flex items-center gap-1">
+              <span>&bull; Unacknowledged Queue</span>
+            </span>
+            <span className="opacity-0 group-hover:opacity-100 transition-all duration-200 font-black transform group-hover:translate-x-0.5">
+              &rarr;
+            </span>
+          </div>
+        </div>
 
-          {/* 5. Medium Severity */}
-          <div
-            onClick={() => openDrilldown('medium_severity')}
-            className="dashboard-glass-card p-4.5 sm:p-5 rounded-2xl shadow-xs interactive-card cursor-pointer group active:scale-95 animate-slide-up delay-250 relative overflow-hidden"
-          >
-            <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/80 to-transparent pointer-events-none" />
-            <div className="flex items-center justify-between">
-              <span className="text-sm sm:text-base font-black text-slate-900 tracking-wide group-hover:text-amber-600 transition-colors">
-                Medium Severity
-              </span>
-              <span className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse"></span>
-            </div>
-            <div className="text-3xl sm:text-4xl font-black text-slate-950 mt-1.5 tracking-tight">
-              <CountUp value={cards.medium_severity} />
-            </div>
-            <div className="flex items-center justify-between mt-2 pt-1.5 border-t border-slate-200/50 text-xs font-bold text-slate-800">
-              <span>72h Routine SLA Window</span>
-              <span className="text-amber-700 font-black opacity-0 group-hover:opacity-100 transition-all duration-200 transform group-hover:translate-x-0.5">
-                &rarr;
-              </span>
+        {/* 5. Medium Severity */}
+        <div
+          onClick={() => openDrilldown('medium_severity')}
+          className="bg-white p-4.5 sm:p-5 rounded-2xl border-2 border-slate-200/90 shadow-xs hover:shadow-lg hover:border-amber-400 hover-glow-amber interactive-card cursor-pointer group active:scale-95 animate-slide-up delay-250"
+        >
+          <div className="flex items-center justify-between">
+            <span className="text-sm sm:text-base font-black text-slate-900 tracking-wide group-hover:text-amber-600 transition-colors">
+              Medium Severity
+            </span>
+            <span className="w-2.5 h-2.5 rounded-full bg-amber-400 animate-pulse"></span>
+          </div>
+          <div className="text-3xl sm:text-4xl font-black text-slate-950 mt-1.5 tracking-tight">
+            <CountUp value={cards.medium_severity} />
+          </div>
+          <div className="flex items-center justify-between mt-2 pt-1.5 border-t border-slate-200 text-xs font-bold text-slate-800">
+            <span>72h Routine SLA Window</span>
+            <span className="text-amber-700 font-black opacity-0 group-hover:opacity-100 transition-all duration-200 transform group-hover:translate-x-0.5">
+              &rarr;
+            </span>
+          </div>
+        </div>
+
+        {/* 6. Low Severity */}
+        <div
+          onClick={() => openDrilldown('low_severity')}
+          className="bg-white p-4.5 sm:p-5 rounded-2xl border-2 border-slate-200/90 shadow-xs hover:shadow-lg hover:border-emerald-400 hover-glow-emerald interactive-card cursor-pointer group active:scale-95 animate-slide-up delay-300"
+        >
+          <div className="flex items-center justify-between">
+            <span className="text-sm sm:text-base font-black text-slate-900 tracking-wide group-hover:text-emerald-600 transition-colors">
+              Low Severity
+            </span>
+            <span className="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+          </div>
+          <div className="text-3xl sm:text-4xl font-black text-slate-950 mt-1.5 tracking-tight">
+            <CountUp value={cards.low_severity} />
+          </div>
+          <div className="flex items-center justify-between mt-2 pt-1.5 border-t border-slate-200 text-xs font-bold text-slate-800">
+            <span>Early Baseline Shift</span>
+            <span className="text-emerald-700 font-black opacity-0 group-hover:opacity-100 transition-all duration-200 transform group-hover:translate-x-0.5">
+              &rarr;
+            </span>
+          </div>
+        </div>
+
+        {/* 7. Resolved Alerts */}
+        <div
+          onClick={() => openDrilldown('resolved_alerts')}
+          className="bg-white p-4.5 sm:p-5 rounded-2xl border-2 border-emerald-200 shadow-xs hover:shadow-lg hover:border-emerald-400 hover-glow-emerald interactive-card cursor-pointer group active:scale-95 animate-slide-up delay-400"
+        >
+          <div className="flex items-center justify-between">
+            <span className="text-sm sm:text-base font-black text-emerald-950 tracking-wide group-hover:text-emerald-800 transition-colors">
+              Resolved Alerts
+            </span>
+            <div className="p-2 rounded-xl bg-emerald-100 group-hover:bg-emerald-200 transition-colors">
+              <CheckCircle2 className="w-5 h-5 text-emerald-600 group-hover:scale-110 transition-transform" />
             </div>
           </div>
+          <div className="text-3xl sm:text-4xl font-black text-emerald-600 mt-1.5 tracking-tight">
+            <CountUp value={cards.resolved_alerts} />
+          </div>
+          <div className="flex items-center justify-between mt-2 pt-1.5 border-t border-emerald-100 text-xs font-black text-emerald-900">
+            <span className="flex items-center gap-1.5">
+              <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+              <span>Verified Interventions</span>
+            </span>
+            <span className="opacity-0 group-hover:opacity-100 transition-all duration-200 font-black transform group-hover:translate-x-0.5">
+              &rarr;
+            </span>
+          </div>
+        </div>
 
-          {/* 6. Low Severity */}
-          <div
-            onClick={() => openDrilldown('low_severity')}
-            className="dashboard-glass-card p-4.5 sm:p-5 rounded-2xl shadow-xs interactive-card cursor-pointer group active:scale-95 animate-slide-up delay-300 relative overflow-hidden"
-          >
-            <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/80 to-transparent pointer-events-none" />
-            <div className="flex items-center justify-between">
-              <span className="text-sm sm:text-base font-black text-slate-900 tracking-wide group-hover:text-emerald-600 transition-colors">
-                Low Severity
-              </span>
-              <span className="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
-            </div>
-            <div className="text-3xl sm:text-4xl font-black text-slate-950 mt-1.5 tracking-tight">
-              <CountUp value={cards.low_severity} />
-            </div>
-            <div className="flex items-center justify-between mt-2 pt-1.5 border-t border-slate-200/50 text-xs font-bold text-slate-800">
-              <span>Early Baseline Shift</span>
-              <span className="text-emerald-700 font-black opacity-0 group-hover:opacity-100 transition-all duration-200 transform group-hover:translate-x-0.5">
-                &rarr;
-              </span>
+        {/* 8. False Positives */}
+        <div
+          onClick={() => openDrilldown('false_positives')}
+          className="bg-white p-4.5 sm:p-5 rounded-2xl border-2 border-slate-200/90 shadow-xs hover:shadow-lg hover:border-slate-400 hover-glow-slate interactive-card cursor-pointer group active:scale-95 animate-slide-up delay-500"
+        >
+          <div className="flex items-center justify-between">
+            <span className="text-sm sm:text-base font-black text-slate-900 tracking-wide group-hover:text-slate-950 transition-colors">
+              False Positives
+            </span>
+            <div className="p-2 rounded-xl bg-slate-100 group-hover:bg-slate-200 transition-colors">
+              <HelpCircle className="w-5 h-5 text-slate-600 group-hover:scale-110 transition-transform" />
             </div>
           </div>
-
-          {/* 7. Resolved Alerts */}
-          <div
-            onClick={() => openDrilldown('resolved_alerts')}
-            className="dashboard-glass-card p-4.5 sm:p-5 rounded-2xl shadow-xs interactive-card cursor-pointer group active:scale-95 animate-slide-up delay-400 relative overflow-hidden"
-          >
-            <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/80 to-transparent pointer-events-none" />
-            <div className="flex items-center justify-between">
-              <span className="text-sm sm:text-base font-black text-emerald-950 tracking-wide group-hover:text-emerald-800 transition-colors">
-                Resolved Alerts
-              </span>
-              <div className="p-2 rounded-xl bg-emerald-100/80 backdrop-blur-xs group-hover:bg-emerald-200 transition-colors">
-                <CheckCircle2 className="w-5 h-5 text-emerald-600 group-hover:scale-110 transition-transform" />
-              </div>
-            </div>
-            <div className="text-3xl sm:text-4xl font-black text-emerald-600 mt-1.5 tracking-tight">
-              <CountUp value={cards.resolved_alerts} />
-            </div>
-            <div className="flex items-center justify-between mt-2 pt-1.5 border-t border-emerald-200/50 text-xs font-black text-emerald-900">
-              <span className="flex items-center gap-1.5">
-                <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                <span>Verified Interventions</span>
-              </span>
-              <span className="opacity-0 group-hover:opacity-100 transition-all duration-200 font-black transform group-hover:translate-x-0.5">
-                &rarr;
-              </span>
-            </div>
+          <div className="text-3xl sm:text-4xl font-black text-slate-900 mt-1.5 tracking-tight">
+            <CountUp value={cards.false_positives} />
           </div>
-
-          {/* 8. False Positives */}
-          <div
-            onClick={() => openDrilldown('false_positives')}
-            className="dashboard-glass-card p-4.5 sm:p-5 rounded-2xl shadow-xs interactive-card cursor-pointer group active:scale-95 animate-slide-up delay-500 relative overflow-hidden"
-          >
-            <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/80 to-transparent pointer-events-none" />
-            <div className="flex items-center justify-between">
-              <span className="text-sm sm:text-base font-black text-slate-900 tracking-wide group-hover:text-slate-950 transition-colors">
-                False Positives
-              </span>
-              <div className="p-2 rounded-xl bg-slate-100/80 backdrop-blur-xs group-hover:bg-slate-200 transition-colors">
-                <HelpCircle className="w-5 h-5 text-slate-600 group-hover:scale-110 transition-transform" />
-              </div>
-            </div>
-            <div className="text-3xl sm:text-4xl font-black text-slate-900 mt-1.5 tracking-tight">
-              <CountUp value={cards.false_positives} />
-            </div>
-            <div className="flex items-center justify-between mt-2 pt-1.5 border-t border-slate-200/50 text-xs font-bold text-slate-800">
-              <span>Model Tuning Calibration</span>
-              <span className="text-slate-900 font-black opacity-0 group-hover:opacity-100 transition-all duration-200 transform group-hover:translate-x-0.5">
-                &rarr;
-              </span>
-            </div>
+          <div className="flex items-center justify-between mt-2 pt-1.5 border-t border-slate-200 text-xs font-bold text-slate-800">
+            <span>Model Tuning Calibration</span>
+            <span className="text-slate-900 font-black opacity-0 group-hover:opacity-100 transition-all duration-200 transform group-hover:translate-x-0.5">
+              &rarr;
+            </span>
           </div>
         </div>
       </div>
