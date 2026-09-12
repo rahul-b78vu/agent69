@@ -22,6 +22,16 @@ class LoginRequest(BaseModel):
     password: str
 
 
+class RegisterRequest(BaseModel):
+    username: str
+    password: str
+    full_name: str
+    email: str
+    role: Optional[RoleName] = RoleName.MENTOR
+    department_id: Optional[int] = None
+    department_code: Optional[str] = None
+
+
 class RoleOut(BaseModel):
     id: int
     name: RoleName

@@ -8,6 +8,7 @@ import {
   ThresholdConfig,
   AuditLog,
   User,
+  RegisterData,
 } from '../types';
 
 const API_BASE = import.meta.env.VITE_API_URL
@@ -48,6 +49,14 @@ api.interceptors.response.use(
 export const authApi = {
   login: async (credentials: { username: string; password: string }) => {
     const res = await api.post('/auth/login', credentials);
+    return res.data;
+  },
+  register: async (data: RegisterData) => {
+    const res = await api.post('/auth/register', data);
+    return res.data;
+  },
+  getRolesAndDepartments: async () => {
+    const res = await api.get('/auth/roles-and-departments');
     return res.data;
   },
   getMe: async (): Promise<User> => {

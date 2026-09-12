@@ -23,6 +23,16 @@ export interface User {
   department_id?: number;
 }
 
+export interface RegisterData {
+  username: string;
+  password: string;
+  full_name: string;
+  email: string;
+  role?: RoleName;
+  department_id?: number;
+  department_code?: string;
+}
+
 export interface Student {
   id: number;
   student_code: string;
