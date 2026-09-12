@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { UserCheck, Shield, Clock, Users, ArrowRight, AlertTriangle, User, CheckCircle2 } from 'lucide-react';
-import { alertsApi } from '../services/api';
-import { Alert } from '../types';
+import { UserCheck, Shield, Clock, Users, ArrowRight, AlertTriangle, User as UserIcon, CheckCircle2, Database, Mail, Award } from 'lucide-react';
+import { alertsApi, authApi } from '../services/api';
+import { Alert, User } from '../types';
 
 export const Responders: React.FC = () => {
   const [alerts, setAlerts] = useState<Alert[]>([]);
+  const [registeredUsers, setRegisteredUsers] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -14,8 +15,12 @@ export const Responders: React.FC = () => {
   const loadData = async () => {
     setLoading(true);
     try {
-      const alertList = await alertsApi.list();
+      const [alertList, usersList] = await Promise.all([
+        alertsApi.list(),
+        authApi.listUsers().catch(() => []),
+      ]);
       setAlerts(alertList);
+      setRegisteredUsers(usersList);
     } catch (e) {
       console.error(e);
     } finally {
@@ -138,6 +143,71 @@ export const Responders: React.FC = () => {
             </div>
           );
         })}
+      </div>
+
+      {/* --- Registered Institutional Accounts (Live Database Table) --- */}
+      <div className="mt-12 bg-white rounded-2xl border border-slate-200/90 shadow-2xs overflow-hidden">
+        <div className="p-6 border-b border-slate-100 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 bg-slate-50/50">
+          <div>
+            <div className="flex items-center gap-2">
+              <Database className="w-5 h-5 text-blue-600" />
+              <h2 className="text-lg font-bold text-slate-900">Registered Institutional Accounts</h2>
+              <span className="px-2.5 py-0.5 rounded-full text-xs font-bold bg-blue-100 text-blue-800">
+                {registeredUsers.length} in database
+              </span>
+            </div>
+            <p className="text-xs text-slate-500 mt-1">
+              Live accounts stored in SQLite (<code className="text-[11px] font-mono bg-slate-100 px-1 py-0.5 rounded">backend/agent69.db</code>) via Signup / System Seeding.
+            </p>
+          </div>
+          <span className="text-[11px] font-semibold text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1 rounded-full flex items-center gap-1.5">
+            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+            Database Synced
+          </span>
+        </div>
+
+        <div className="overflow-x-auto">
+          <table className="w-full text-left border-collapse">
+            <thead>
+              <tr className="border-b border-slate-200/80 bg-slate-100/50 text-[11px] font-bold text-slate-600 uppercase tracking-wider">
+                <th className="py-3 px-4">User ID</th>
+                <th className="py-3 px-4">Full Name</th>
+                <th className="py-3 px-4">Username</th>
+                <th className="py-3 px-4">Email</th>
+                <th className="py-3 px-4">Assigned Role(s)</th>
+                <th className="py-3 px-4 text-center">Status</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-100 text-xs">
+              {registeredUsers.map((u) => (
+                <tr key={u.id} className="hover:bg-slate-50/80 transition-colors">
+                  <td className="py-3 px-4 font-mono font-bold text-slate-500">#{u.id}</td>
+                  <td className="py-3 px-4 font-bold text-slate-900">{u.full_name}</td>
+                  <td className="py-3 px-4 font-medium text-blue-600">@{u.username}</td>
+                  <td className="py-3 px-4 text-slate-600">{u.email}</td>
+                  <td className="py-3 px-4">
+                    <div className="flex flex-wrap gap-1">
+                      {u.roles?.map((r) => (
+                        <span
+                          key={r.id || r.name}
+                          className="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-50 text-blue-700 border border-blue-200"
+                        >
+                          {r.name}
+                        </span>
+                      ))}
+                    </div>
+                  </td>
+                  <td className="py-3 px-4 text-center">
+                    <span className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+                      <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+                      Active in DB
+                    </span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   );

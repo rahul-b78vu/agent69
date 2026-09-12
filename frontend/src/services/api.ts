@@ -63,6 +63,10 @@ export const authApi = {
     const res = await api.get('/auth/me');
     return res.data;
   },
+  listUsers: async (): Promise<User[]> => {
+    const res = await api.get('/auth/users');
+    return res.data;
+  },
   getDemoUsers: async () => {
     const res = await api.get('/auth/demo-users');
     return res.data;

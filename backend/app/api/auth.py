@@ -112,6 +112,12 @@ def get_me(current_user: User = Depends(get_current_user)):
     return current_user
 
 
+@router.get("/users", response_model=List[UserOut])
+def list_all_users(db: Session = Depends(get_db)):
+    """List all registered institutional users stored in the database."""
+    return db.query(User).order_by(User.id.desc()).all()
+
+
 @router.get("/demo-users")
 def get_demo_users():
     """Provides convenient list of test users and passwords for reviewers."""
