@@ -374,14 +374,17 @@ export const ExplainabilityAudit: React.FC<ExplainabilityAuditProps> = ({ alert 
                       {/* 3-Column Metrics Comparison Strip */}
                       <div className="grid grid-cols-3 gap-2 sm:gap-3 bg-slate-50/80 p-3.5 rounded-xl border border-slate-200/80">
                         {/* Baseline */}
-                        <div className="space-y-1 bg-white p-3 rounded-lg border border-slate-200/70 shadow-2xs">
-                          <span className="text-[10px] font-black uppercase tracking-wider text-slate-400 block">
+                        <div className="space-y-1 bg-emerald-50/30 p-3 rounded-lg border border-emerald-200/70 shadow-2xs">
+                          <span className="text-[10px] font-black uppercase tracking-wider text-emerald-800/70 block">
                             Personal Baseline
                           </span>
-                          <span className="text-xl sm:text-2xl font-black text-slate-800 tracking-tight block">
+                          <span className="text-xl sm:text-2xl font-black text-emerald-600 tracking-tight block">
                             {sig.baseline}
                           </span>
-                          <span className="text-[10px] text-slate-400 font-medium block">Historical benchmark</span>
+                          <span className="text-[10px] text-emerald-700/80 font-medium flex items-center gap-1">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block" />
+                            Historical benchmark
+                          </span>
                         </div>
 
                         {/* Observed Change / Deviation */}
@@ -426,17 +429,39 @@ export const ExplainabilityAudit: React.FC<ExplainabilityAuditProps> = ({ alert 
                           </span>
                         </div>
 
-                        {/* Current Value */}
-                        <div className="space-y-1 bg-white p-3 rounded-lg border border-slate-200/70 shadow-2xs text-right">
-                          <span className="text-[10px] font-black uppercase tracking-wider text-slate-400 block">
+                        {/* Current Value (Red if decreased, Green if optimal/increased) */}
+                        <div
+                          className={`space-y-1 p-3 rounded-lg border shadow-2xs text-right ${
+                            isNegative
+                              ? 'bg-rose-50/50 border-rose-200/90'
+                              : 'bg-emerald-50/50 border-emerald-200/90'
+                          }`}
+                        >
+                          <span
+                            className={`text-[10px] font-black uppercase tracking-wider block ${
+                              isNegative ? 'text-rose-600/80' : 'text-emerald-700/80'
+                            }`}
+                          >
                             Current Period
                           </span>
-                          <span className="text-xl sm:text-2xl font-black text-slate-950 tracking-tight block">
+                          <span
+                            className={`text-xl sm:text-2xl font-black tracking-tight block ${
+                              isNegative ? 'text-rose-600' : 'text-emerald-600'
+                            }`}
+                          >
                             {sig.current}
                           </span>
-                          <span className="text-[10px] text-slate-400 font-medium block flex items-center justify-end gap-1">
-                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block animate-pulse" />
-                            Latest monitored cycle
+                          <span
+                            className={`text-[10px] font-medium flex items-center justify-end gap-1 ${
+                              isNegative ? 'text-rose-600/90' : 'text-emerald-700/90'
+                            }`}
+                          >
+                            <span
+                              className={`w-1.5 h-1.5 rounded-full inline-block animate-pulse ${
+                                isNegative ? 'bg-rose-500' : 'bg-emerald-500'
+                              }`}
+                            />
+                            {isNegative ? 'Decreased vs baseline' : 'Optimal / benchmark met'}
                           </span>
                         </div>
                       </div>
@@ -446,10 +471,10 @@ export const ExplainabilityAudit: React.FC<ExplainabilityAuditProps> = ({ alert 
                         <div className="space-y-2 pt-1">
                           {/* Gauge Legend */}
                           <div className="flex items-center justify-between text-xs font-bold">
-                            <div className="flex items-center gap-1.5 text-rose-600">
+                            <div className={`flex items-center gap-1.5 ${isNegative ? 'text-rose-600' : 'text-emerald-600'}`}>
                               <span className="relative flex h-2.5 w-2.5">
-                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
-                                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-rose-500 shadow-[0_0_8px_rgba(244,63,94,0.8)]"></span>
+                                <span className={`animate-ping absolute inline-flex h-full w-full rounded-full ${isNegative ? 'bg-rose-400' : 'bg-emerald-400'} opacity-75`}></span>
+                                <span className={`relative inline-flex rounded-full h-2.5 w-2.5 ${isNegative ? 'bg-rose-500 shadow-[0_0_8px_rgba(244,63,94,0.8)]' : 'bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]'}`}></span>
                               </span>
                               <span>Current: {sig.currentNum.toFixed(1)}%</span>
                             </div>
@@ -460,8 +485,8 @@ export const ExplainabilityAudit: React.FC<ExplainabilityAuditProps> = ({ alert 
                               </div>
                             )}
 
-                            <div className="flex items-center gap-1.5 text-slate-600">
-                              <div className="w-2.5 h-2.5 rounded-xs bg-slate-800 shadow-2xs" />
+                            <div className="flex items-center gap-1.5 text-emerald-700">
+                              <div className="w-2.5 h-2.5 rounded-xs bg-emerald-600 shadow-2xs" />
                               <span>Baseline: {sig.baselineNum.toFixed(1)}%</span>
                             </div>
                           </div>
@@ -487,9 +512,13 @@ export const ExplainabilityAudit: React.FC<ExplainabilityAuditProps> = ({ alert 
                               />
                             )}
 
-                            {/* Current fill bar with animated shimmer */}
+                            {/* Current fill bar with animated shimmer (Red if decreased, Emerald if good) */}
                             <div
-                              className="h-full rounded-full bg-gradient-to-r from-amber-400 via-rose-500 to-red-600 shadow-[0_0_12px_rgba(244,63,94,0.5)] transition-all duration-1000 ease-out relative overflow-hidden z-10"
+                              className={`h-full rounded-full transition-all duration-1000 ease-out relative overflow-hidden z-10 ${
+                                isNegative
+                                  ? 'bg-gradient-to-r from-amber-400 via-rose-500 to-red-600 shadow-[0_0_12px_rgba(244,63,94,0.5)]'
+                                  : 'bg-gradient-to-r from-emerald-400 via-teal-500 to-emerald-600 shadow-[0_0_12px_rgba(16,185,129,0.5)]'
+                              }`}
                               style={{ width: `${curPercent}%` }}
                             >
                               {/* Inner moving light shimmer overlay */}
@@ -498,16 +527,16 @@ export const ExplainabilityAudit: React.FC<ExplainabilityAuditProps> = ({ alert 
                               <div className="absolute right-0 top-0 bottom-0 w-2 bg-white/80 rounded-r-full shadow-[0_0_6px_#fff]" />
                             </div>
 
-                            {/* Baseline flag marker needle & diamond pins */}
+                            {/* Baseline flag marker needle & diamond pins in Emerald Green */}
                             <div
-                              className="absolute top-0 bottom-0 w-1 bg-slate-900 shadow-sm z-20"
+                              className="absolute top-0 bottom-0 w-1 bg-emerald-700 shadow-sm z-20"
                               style={{ left: `${basePercent}%` }}
                               title={`Personal Baseline: ${sig.baselineNum}%`}
                             >
                               {/* Diamond top pin */}
-                              <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 rotate-45 bg-slate-900 border border-white shadow-xs" />
+                              <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 rotate-45 bg-emerald-600 border border-white shadow-xs" />
                               {/* Diamond bottom pin */}
-                              <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 rotate-45 bg-slate-900 border border-white shadow-xs" />
+                              <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 rotate-45 bg-emerald-600 border border-white shadow-xs" />
                             </div>
                           </div>
                         </div>
