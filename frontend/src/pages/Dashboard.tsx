@@ -1024,8 +1024,8 @@ I wear my blue Superman hoodie and red cape while patrolling your campus telemet
           </div>
 
           {/* Real Interactive 3D Walking & Waving Superhero Robot */}
-          <div className="relative z-0 h-40 sm:h-44 my-1 overflow-hidden rounded-2xl flex items-center justify-center bg-gradient-to-b from-blue-50/60 via-white/40 to-indigo-50/30 border border-blue-100/80 shadow-inner">
-            <Robot3D className="w-full h-full" />
+          <div className="relative z-0 h-44 sm:h-48 my-1 overflow-hidden rounded-2xl flex items-center justify-center bg-gradient-to-b from-blue-50/60 via-white/40 to-indigo-50/30 border border-blue-100/80 shadow-inner">
+            <Robot3D className="w-full h-full" onClick={() => setBotOpen(true)} />
           </div>
 
           {/* Quick Input Box at Bottom */}
@@ -1066,8 +1066,8 @@ I wear my blue Superman hoodie and red cape while patrolling your campus telemet
             {/* Modal Header */}
             <div className="flex items-center justify-between px-5 py-3.5 bg-gradient-to-r from-blue-600 to-indigo-700 text-white">
               <div className="flex items-center gap-2.5">
-                <div className="p-1.5 bg-white/20 rounded-lg">
-                  <Bot className="w-5 h-5 text-white" />
+                <div className="w-9 h-9 rounded-xl bg-white/15 p-0.5 border border-white/20 flex items-center justify-center shrink-0">
+                  <img src="/superhero-robot.png" alt="Agent 69" className="w-8 h-8 object-contain drop-shadow-sm" />
                 </div>
                 <div>
                   <h3 className="text-sm font-bold leading-none">Agent 69 AI Campus Assistant</h3>
@@ -1110,8 +1110,8 @@ I wear my blue Superman hoodie and red cape while patrolling your campus telemet
                   className={`flex gap-2.5 ${msg.sender === 'user' ? 'justify-end' : 'justify-start'}`}
                 >
                   {msg.sender === 'bot' && (
-                    <div className="w-7 h-7 rounded-full bg-blue-600 text-white flex items-center justify-center shrink-0 shadow-xs mt-0.5">
-                      <Bot className="w-4 h-4" />
+                    <div className="w-8 h-8 rounded-full bg-blue-100 border border-blue-300 flex items-center justify-center shrink-0 shadow-xs mt-0.5 overflow-hidden">
+                      <img src="/superhero-robot.png" alt="Agent 69" className="w-7 h-7 object-contain" />
                     </div>
                   )}
                   <div

@@ -757,6 +757,20 @@ tr {
   will-change: transform;
 }
 
+@keyframes robotFloatGentle {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(0.8deg);
+  }
+}
+
+.animate-robot-float {
+  animation: robotFloatGentle 3.6s ease-in-out infinite;
+  will-change: transform;
+}
+
 /* ==========================================================================
    Chart Focus & Smooth Jump Highlight Pulse Animation
    ========================================================================== */
