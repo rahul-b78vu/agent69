@@ -1,0 +1,28 @@
+[
+  {
+    "id": 1,
+    "alert_id": 1,
+    "responder_user_id": 1,
+    "action_taken": null,
+    "outcome": "ACADEMIC_SUPPORT_PROVIDED",
+    "concern_was_real": 1,
+    "intervention_useful": 1,
+    "is_false_positive": 0,
+    "notes": "Student responded positively",
+    "recorded_at": "2026-09-11 14:43:40.621675",
+    "_id": "6aa4ff3ca72756114696c080"
+  },
+  {
+    "id": 2,
+    "alert_id": 83,
+    "responder_user_id": 1,
+    "action_taken": "Human intervention finalized",
+    "outcome": "FINANCIAL_SUPPORT_PROVIDED",
+    "concern_was_real": 1,
+    "intervention_useful": 1,
+    "is_false_positive": 0,
+    "notes": "need support",
+    "recorded_at": "2026-09-12 06:11:13.204520",
+    "_id": "6aa4ff3ca72756114696c081"
+  }
+]

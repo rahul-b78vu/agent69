@@ -1,0 +1,110 @@
+[
+  {
+    "id": 1,
+    "user_id": 1,
+    "action": "ACKNOWLEDGE_ALERT",
+    "object_type": "Alert",
+    "object_id": "1",
+    "previous_value": "NEW",
+    "new_value": "ACKNOWLEDGED",
+    "ip_address": null,
+    "created_at": "2026-09-11 14:43:40.592953",
+    "_id": "6aa4ff3ca727561146968e02"
+  },
+  {
+    "id": 2,
+    "user_id": 1,
+    "action": "ADD_NOTE",
+    "object_type": "Alert",
+    "object_id": "1",
+    "previous_value": null,
+    "new_value": "Met student today",
+    "ip_address": null,
+    "created_at": "2026-09-11 14:43:40.605116",
+    "_id": "6aa4ff3ca727561146968e03"
+  },
+  {
+    "id": 3,
+    "user_id": 1,
+    "action": "RECORD_ACTION",
+    "object_type": "Alert",
+    "object_id": "1",
+    "previous_value": "ACKNOWLEDGED",
+    "new_value": "ACTION_TAKEN",
+    "ip_address": null,
+    "created_at": "2026-09-11 14:43:40.614923",
+    "_id": "6aa4ff3ca727561146968e04"
+  },
+  {
+    "id": 4,
+    "user_id": 1,
+    "action": "RESOLVE_ALERT_OUTCOME",
+    "object_type": "Alert",
+    "object_id": "1",
+    "previous_value": "ACTION_TAKEN",
+    "new_value": "RESOLVED",
+    "ip_address": null,
+    "created_at": "2026-09-11 14:43:40.628391",
+    "_id": "6aa4ff3ca727561146968e05"
+  },
+  {
+    "id": 5,
+    "user_id": 1,
+    "action": "RUN_CALIBRATION",
+    "object_type": "CalibrationRun",
+    "object_id": "1",
+    "previous_value": null,
+    "new_value": "FP Rate: 0.0%, TP Rate: 100.0%",
+    "ip_address": null,
+    "created_at": "2026-09-11 14:44:19.798177",
+    "_id": "6aa4ff3ca727561146968e06"
+  },
+  {
+    "id": 6,
+    "user_id": 1,
+    "action": "CALIBRATION_DECISION",
+    "object_type": "CalibrationRun",
+    "object_id": "1",
+    "previous_value": null,
+    "new_value": "APPROVED",
+    "ip_address": null,
+    "created_at": "2026-09-11 14:44:19.819563",
+    "_id": "6aa4ff3ca727561146968e07"
+  },
+  {
+    "id": 7,
+    "user_id": 1,
+    "action": "ACKNOWLEDGE_ALERT",
+    "object_type": "Alert",
+    "object_id": "83",
+    "previous_value": "NEW",
+    "new_value": "ACKNOWLEDGED",
+    "ip_address": null,
+    "created_at": "2026-09-11 14:58:20.034282",
+    "_id": "6aa4ff3ca727561146968e08"
+  },
+  {
+    "id": 8,
+    "user_id": 1,
+    "action": "RESOLVE_ALERT_OUTCOME",
+    "object_type": "Alert",
+    "object_id": "83",
+    "previous_value": "ACKNOWLEDGED",
+    "new_value": "RESOLVED",
+    "ip_address": null,
+    "created_at": "2026-09-12 06:11:13.226451",
+    "_id": "6aa4ff3ca727561146968e09"
+  },
+  {
+    "id": 9,
+    "user_id": 10,
+    "action": "ADD_NOTE",
+    "object_type": "Alert",
+    "object_id": "82",
+    "previous_value": null,
+    "new_value": "student need support\n",
+    "ip_address": null,
+    "created_at": "2026-09-12 07:25:47.207750",
+    "_id": "6aa4ff3ca727561146968e0a"
+  }
+]

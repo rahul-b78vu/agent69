@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import { Search, Filter, ArrowRight, UserCheck, AlertCircle, ShieldAlert } from 'lucide-react';
+import { Search, Filter, ArrowRight, UserCheck, AlertCircle, ShieldAlert, UserPlus, Database } from 'lucide-react';
 import { studentsApi } from '../services/api';
 import { Student } from '../types';
 import { SeverityBadge } from '../components/Badges';
+import { AddStudentModal } from '../components/AddStudentModal';
 
 export const Students: React.FC = () => {
   const [searchParams] = useSearchParams();
@@ -12,6 +13,7 @@ export const Students: React.FC = () => {
   const [selectedDept, setSelectedDept] = useState<number | undefined>(undefined);
   const [selectedSeverity, setSelectedSeverity] = useState<string>(searchParams.get('risk') || 'ALL');
   const [loading, setLoading] = useState(true);
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
 
   useEffect(() => {
     const riskParam = searchParams.get('risk');
@@ -60,9 +62,23 @@ export const Students: React.FC = () => {
             View student information and monitor changes against their personal academic and engagement baseline.
           </p>
         </div>
-        <div className="inline-flex items-center gap-2 text-xs font-extrabold text-blue-800 bg-blue-50 px-4 py-2 rounded-xl border border-blue-200 shadow-2xs self-start md:self-auto">
-          <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse" />
-          <span>{filteredStudents.length} students</span>
+        <div className="flex flex-wrap items-center gap-3 self-start md:self-auto">
+          <button
+            id="btn-add-student-mongo"
+            onClick={() => setIsAddModalOpen(true)}
+            className="inline-flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 hover:from-blue-700 hover:to-indigo-800 text-white text-xs font-black shadow-md hover:shadow-lg transition-all cursor-pointer active:scale-95 border border-blue-400/30"
+          >
+            <UserPlus className="w-4 h-4" />
+            <span>+ Input Student Data</span>
+            <span className="inline-flex items-center gap-1 bg-emerald-500/20 text-emerald-200 border border-emerald-400/30 px-2 py-0.5 rounded-md text-[10px] font-bold">
+              <Database className="w-3 h-3 text-emerald-400" />
+              Mongo
+            </span>
+          </button>
+          <div className="inline-flex items-center gap-2 text-xs font-extrabold text-blue-800 bg-blue-50 px-4 py-2 rounded-xl border border-blue-200 shadow-2xs">
+            <span className="w-2 h-2 rounded-full bg-blue-600 animate-pulse" />
+            <span>{filteredStudents.length} students</span>
+          </div>
         </div>
       </div>
 
@@ -227,6 +243,15 @@ export const Students: React.FC = () => {
           <span className="text-[11px] text-slate-400 font-medium">Personal baseline monitoring active</span>
         </div>
       </div>
+
+      {/* Add Student Modal with Local MongoDB Compass Sync */}
+      <AddStudentModal
+        isOpen={isAddModalOpen}
+        onClose={() => setIsAddModalOpen(false)}
+        onStudentAdded={(newStudent) => {
+          setStudents((prev) => [newStudent, ...prev]);
+        }}
+      />
     </div>
   );
 };

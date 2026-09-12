@@ -1,0 +1,44 @@
+[
+  {
+    "id": 1,
+    "name": "ADMIN",
+    "description": "ADMIN role",
+    "_id": "6aa4ff3ba727561146968d65"
+  },
+  {
+    "id": 2,
+    "name": "MENTOR",
+    "description": "MENTOR role",
+    "_id": "6aa4ff3ba727561146968d66"
+  },
+  {
+    "id": 3,
+    "name": "HOD",
+    "description": "HOD role",
+    "_id": "6aa4ff3ba727561146968d67"
+  },
+  {
+    "id": 4,
+    "name": "DEAN",
+    "description": "DEAN role",
+    "_id": "6aa4ff3ba727561146968d68"
+  },
+  {
+    "id": 5,
+    "name": "COUNSELLOR",
+    "description": "COUNSELLOR role",
+    "_id": "6aa4ff3ba727561146968d69"
+  },
+  {
+    "id": 6,
+    "name": "FINANCE_SUPPORT",
+    "description": "FINANCE_SUPPORT role",
+    "_id": "6aa4ff3ba727561146968d6a"
+  },
+  {
+    "id": 7,
+    "name": "PRINCIPAL",
+    "description": "PRINCIPAL role",
+    "_id": "6aa4ff3ba727561146968d6b"
+  }
+]

@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "name": "B.Tech CSE - Core",
+    "code": "CSE-CORE",
+    "department_id": 1,
+    "_id": "6aa4ff3ba727561146968d7a"
+  },
+  {
+    "id": 2,
+    "name": "B.Tech CSE - AI/ML",
+    "code": "CSE-AIML",
+    "department_id": 1,
+    "_id": "6aa4ff3ba727561146968d7b"
+  },
+  {
+    "id": 3,
+    "name": "B.Tech ECE - Core",
+    "code": "ECE-CORE",
+    "department_id": 2,
+    "_id": "6aa4ff3ba727561146968d7c"
+  },
+  {
+    "id": 4,
+    "name": "B.Tech ECE - VLSI",
+    "code": "ECE-VLSI",
+    "department_id": 2,
+    "_id": "6aa4ff3ba727561146968d7d"
+  },
+  {
+    "id": 5,
+    "name": "B.Tech Mechanical",
+    "code": "MECH-CORE",
+    "department_id": 3,
+    "_id": "6aa4ff3ba727561146968d7e"
+  }
+]

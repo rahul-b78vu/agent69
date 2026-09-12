@@ -1,0 +1,72 @@
+[
+  {
+    "id": 1,
+    "alert_id": 1,
+    "responder_user_id": 1,
+    "action": "ACKNOWLEDGE",
+    "notes": "Reviewing now",
+    "new_status": "ACKNOWLEDGED",
+    "created_at": "2026-09-11 14:43:40.585533",
+    "_id": "6aa4ff3ca72756114696c079"
+  },
+  {
+    "id": 2,
+    "alert_id": 1,
+    "responder_user_id": 1,
+    "action": "NOTE",
+    "notes": "Met student today",
+    "new_status": "ACKNOWLEDGED",
+    "created_at": "2026-09-11 14:43:40.600063",
+    "_id": "6aa4ff3ca72756114696c07a"
+  },
+  {
+    "id": 3,
+    "alert_id": 1,
+    "responder_user_id": 1,
+    "action": "ACTION_RECORDED",
+    "notes": "Referred to study group",
+    "new_status": "ACTION_TAKEN",
+    "created_at": "2026-09-11 14:43:40.610345",
+    "_id": "6aa4ff3ca72756114696c07b"
+  },
+  {
+    "id": 4,
+    "alert_id": 1,
+    "responder_user_id": 1,
+    "action": "STATUS_CHANGE",
+    "notes": "Alert finalized with outcome: ACADEMIC_SUPPORT_PROVIDED. Notes: Student responded positively",
+    "new_status": "RESOLVED",
+    "created_at": "2026-09-11 14:43:40.621734",
+    "_id": "6aa4ff3ca72756114696c07c"
+  },
+  {
+    "id": 5,
+    "alert_id": 83,
+    "responder_user_id": 1,
+    "action": "ACKNOWLEDGE",
+    "notes": "Alert acknowledged by responder.",
+    "new_status": "ACKNOWLEDGED",
+    "created_at": "2026-09-11 14:58:19.751278",
+    "_id": "6aa4ff3ca72756114696c07d"
+  },
+  {
+    "id": 6,
+    "alert_id": 83,
+    "responder_user_id": 1,
+    "action": "STATUS_CHANGE",
+    "notes": "Alert finalized with outcome: FINANCIAL_SUPPORT_PROVIDED. Notes: need support",
+    "new_status": "RESOLVED",
+    "created_at": "2026-09-12 06:11:13.204672",
+    "_id": "6aa4ff3ca72756114696c07e"
+  },
+  {
+    "id": 7,
+    "alert_id": 82,
+    "responder_user_id": 10,
+    "action": "NOTE",
+    "notes": "student need support\n",
+    "new_status": "NEW",
+    "created_at": "2026-09-12 07:25:47.193339",
+    "_id": "6aa4ff3ca72756114696c07f"
+  }
+]

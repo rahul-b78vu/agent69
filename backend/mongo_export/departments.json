@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "Computer Science",
+    "code": "CSE",
+    "_id": "6aa4ff3ba727561146968d6c"
+  },
+  {
+    "id": 2,
+    "name": "Electronics & Communication",
+    "code": "ECE",
+    "_id": "6aa4ff3ba727561146968d6d"
+  },
+  {
+    "id": 3,
+    "name": "Mechanical Engineering",
+    "code": "MECH",
+    "_id": "6aa4ff3ba727561146968d6e"
+  }
+]

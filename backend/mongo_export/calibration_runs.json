@@ -1,0 +1,36 @@
+[
+  {
+    "id": 1,
+    "semester_id": null,
+    "total_alerts": 83,
+    "confirmed_concerns": 1,
+    "false_positives": 0,
+    "false_positive_rate": 0.0,
+    "true_positive_rate": 100.0,
+    "avg_response_time_hours": 0.0,
+    "breakdown_by_category": {
+      "ACADEMIC_DIFFICULTY": 13,
+      "DISENGAGEMENT": 11,
+      "FINANCIAL_DIFFICULTY": 20,
+      "HEALTH_PERSONAL": 0,
+      "GENERAL_EARLY_WARNING": 39
+    },
+    "breakdown_by_severity": {
+      "LOW": 39,
+      "MEDIUM": 32,
+      "HIGH": 12
+    },
+    "recommendations": [
+      {
+        "key": "ATTENDANCE_DEVIATION_PCT_LOW",
+        "current_value": 5.0,
+        "recommended_value": 5.0,
+        "reason": "False positive rate (0.0%) is within optimal institutional boundaries (5-20%). Baseline threshold maintained."
+      }
+    ],
+    "status": "APPLIED",
+    "run_at": "2026-09-11 14:44:19.780575",
+    "run_by_user_id": 1,
+    "_id": "6aa4ff3ba727561146968e01"
+  }
+]

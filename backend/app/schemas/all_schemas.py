@@ -51,6 +51,24 @@ class UserOut(BaseModel):
 
 
 # --- Student & Signal Schemas ---
+class StudentCreateRequest(BaseModel):
+    student_code: str
+    year: int = Field(default=2, ge=1, le=4)
+    section: Optional[str] = "A"
+    department_id: Optional[int] = None
+    department_code: Optional[str] = "CSE"
+    course_id: Optional[int] = None
+    course_code: Optional[str] = None
+    attendance_pct: Optional[float] = Field(default=85.0, ge=0.0, le=100.0)
+    marks_pct: Optional[float] = Field(default=75.0, ge=0.0, le=100.0)
+    assignments_submitted: Optional[int] = 5
+    assignments_total: Optional[int] = 5
+    portal_logins: Optional[int] = 12
+    fee_overdue: Optional[bool] = False
+    backlog_count: Optional[int] = 0
+    staff_observation: Optional[str] = None
+
+
 class StudentBase(BaseModel):
     id: int
     student_code: str

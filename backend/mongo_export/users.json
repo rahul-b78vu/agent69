@@ -1,0 +1,112 @@
+[
+  {
+    "id": 1,
+    "username": "admin",
+    "full_name": "System Administrator",
+    "email": "admin@university.edu",
+    "hashed_password": "$2b$12$5B/12NJczrb93MQzJFFqXe21WRU37rqdIrFtT54mnZ4eoDz4fkr5m",
+    "is_active": 1,
+    "department_id": null,
+    "created_at": "2026-09-11 14:42:08.453535",
+    "_id": "6aa4ff3ba727561146968d70"
+  },
+  {
+    "id": 2,
+    "username": "mentor_cse",
+    "full_name": "Prof. Alan Turing",
+    "email": "mentor.cse@university.edu",
+    "hashed_password": "$2b$12$l/V68oY5.EBTFyYzFvz8Guuz6.INZo3Cs1DTy9O6GQhQ8kT0FMLhO",
+    "is_active": 1,
+    "department_id": 1,
+    "created_at": "2026-09-11 14:42:08.453539",
+    "_id": "6aa4ff3ba727561146968d71"
+  },
+  {
+    "id": 3,
+    "username": "hod_cse",
+    "full_name": "Dr. Grace Hopper",
+    "email": "hod.cse@university.edu",
+    "hashed_password": "$2b$12$3mEAGPPjyXndL9qVtwu5q.B30.b.12.nBvaGfGC3bX.JP.wZHz57C",
+    "is_active": 1,
+    "department_id": 1,
+    "created_at": "2026-09-11 14:42:08.453540",
+    "_id": "6aa4ff3ba727561146968d72"
+  },
+  {
+    "id": 4,
+    "username": "dean_academics",
+    "full_name": "Dean John von Neumann",
+    "email": "dean@university.edu",
+    "hashed_password": "$2b$12$YdS8wg4iMgr63wzJHUXFnuRmpQUJnCzQf6YeCzSnaCpo6pLgTvGoG",
+    "is_active": 1,
+    "department_id": null,
+    "created_at": "2026-09-11 14:42:08.453541",
+    "_id": "6aa4ff3ba727561146968d73"
+  },
+  {
+    "id": 5,
+    "username": "counsellor",
+    "full_name": "Dr. Carl Rogers",
+    "email": "counsellor@university.edu",
+    "hashed_password": "$2b$12$P9w4HuBTcClHCDmpWA7hEeKRq1YKcShoUbM54HuZCWxjt8LKpsxA2",
+    "is_active": 1,
+    "department_id": null,
+    "created_at": "2026-09-11 14:42:08.453542",
+    "_id": "6aa4ff3ba727561146968d74"
+  },
+  {
+    "id": 6,
+    "username": "finance_officer",
+    "full_name": "Sarah Jenkins",
+    "email": "finance@university.edu",
+    "hashed_password": "$2b$12$tILO2hMEBMGPcSTl2PaV5OlTJw2ec.S8OewjYX4wZKoNz19USHkHq",
+    "is_active": 1,
+    "department_id": null,
+    "created_at": "2026-09-11 14:42:08.453543",
+    "_id": "6aa4ff3ba727561146968d75"
+  },
+  {
+    "id": 7,
+    "username": "principal",
+    "full_name": "Dr. Ada Lovelace",
+    "email": "principal@university.edu",
+    "hashed_password": "$2b$12$n/hZvJes2Uco.cdPdVG98.MYf77LcSAHqPG4O2zNOyXY1V9weJT2K",
+    "is_active": 1,
+    "department_id": null,
+    "created_at": "2026-09-11 14:42:08.453544",
+    "_id": "6aa4ff3ba727561146968d76"
+  },
+  {
+    "id": 8,
+    "username": "test_prof_1",
+    "full_name": "Prof. Test Scientist",
+    "email": "testprof1@vignan.ac.in",
+    "hashed_password": "$2b$12$nwf3szjRFBWcEu1QH7evRO0g8BVga8n/fdqCWEesNCkt5/zkNlcdS",
+    "is_active": 1,
+    "department_id": 1,
+    "created_at": "2026-09-12 07:02:47.019303",
+    "_id": "6aa4ff3ba727561146968d77"
+  },
+  {
+    "id": 9,
+    "username": "rahul_vignan",
+    "full_name": "Rahul Vignan User",
+    "email": "rahul.vignan@univ.edu",
+    "hashed_password": "$2b$12$rhFZd6O4pnXIT5xmjJ77BemqZp.AMX.ReiQUfU.eURgMbTFJwSBk.",
+    "is_active": 1,
+    "department_id": 1,
+    "created_at": "2026-09-12 07:05:34.444460",
+    "_id": "6aa4ff3ba727561146968d78"
+  },
+  {
+    "id": 10,
+    "username": "sarah_connor",
+    "full_name": "Prof. Sarah Connor",
+    "email": "sarah.connor@vignan.ac.in",
+    "hashed_password": "$2b$12$ynA5yKBlhsTNyt0L90G1cuzVEq1x9/BWQs3Lc7qAN20Ip7n6i9uvi",
+    "is_active": 1,
+    "department_id": 1,
+    "created_at": "2026-09-12 07:08:01.067648",
+    "_id": "6aa4ff3ba727561146968d79"
+  }
+]

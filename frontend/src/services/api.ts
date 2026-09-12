@@ -85,6 +85,10 @@ export const studentsApi = {
     const res = await api.get('/students', { params });
     return res.data;
   },
+  create: async (data: any): Promise<Student> => {
+    const res = await api.post('/students', data);
+    return res.data;
+  },
   getDetail: async (id: number): Promise<StudentDetail> => {
     const res = await api.get(`/students/${id}`);
     return res.data;

@@ -1,0 +1,52 @@
+[
+  {
+    "user_id": 5,
+    "role_id": 5,
+    "_id": "6aa4ff3ba727561146968d7f"
+  },
+  {
+    "user_id": 1,
+    "role_id": 1,
+    "_id": "6aa4ff3ba727561146968d80"
+  },
+  {
+    "user_id": 7,
+    "role_id": 7,
+    "_id": "6aa4ff3ba727561146968d81"
+  },
+  {
+    "user_id": 3,
+    "role_id": 3,
+    "_id": "6aa4ff3ba727561146968d82"
+  },
+  {
+    "user_id": 2,
+    "role_id": 2,
+    "_id": "6aa4ff3ba727561146968d83"
+  },
+  {
+    "user_id": 4,
+    "role_id": 4,
+    "_id": "6aa4ff3ba727561146968d84"
+  },
+  {
+    "user_id": 6,
+    "role_id": 6,
+    "_id": "6aa4ff3ba727561146968d85"
+  },
+  {
+    "user_id": 8,
+    "role_id": 2,
+    "_id": "6aa4ff3ba727561146968d86"
+  },
+  {
+    "user_id": 9,
+    "role_id": 2,
+    "_id": "6aa4ff3ba727561146968d87"
+  },
+  {
+    "user_id": 10,
+    "role_id": 1,
+    "_id": "6aa4ff3ba727561146968d88"
+  }
+]
