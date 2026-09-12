@@ -7,46 +7,46 @@ interface Robot3DProps {
 
 export const Robot3D: React.FC<Robot3DProps> = ({ className = '', onClick }) => {
   const [isHovered, setIsHovered] = useState(false);
-  const [mouseOffset, setMouseOffset] = useState({ x: 0, y: 0 });
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width - 0.5) * 16;
-    const y = ((e.clientY - rect.top) / rect.height - 0.5) * 12;
-    setMouseOffset({ x, y });
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-    setMouseOffset({ x: 0, y: 0 });
-  };
 
   return (
     <div
       onClick={onClick}
-      onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={handleMouseLeave}
-      className={`relative flex flex-col items-center justify-center select-none cursor-pointer group ${className}`}
-      style={{ perspective: '800px' }}
+      onMouseLeave={() => setIsHovered(false)}
+      className={`relative w-full h-full overflow-hidden select-none cursor-pointer group ${className}`}
       title="Agent 69 Superhero Sentinel - Click to chat!"
     >
-      {/* Robot Wrapper with 3D Tilt & Floating Physics */}
+      {/* Moving Patrol Wrapper - Walks Right to Left across the Box in a Loop */}
       <div
-        className="relative flex flex-col items-center transition-transform duration-200 ease-out"
+        className="animate-robot-walk-loop flex flex-col items-center z-10 transition-all"
         style={{
-          transform: isHovered
-            ? `translate3d(${mouseOffset.x * 0.4}px, ${mouseOffset.y * 0.4 - 6}px, 20px) rotateY(${mouseOffset.x * 0.8}deg) rotateX(${-mouseOffset.y * 0.8}deg) scale(1.05)`
-            : 'translate3d(0, 0, 0)',
+          animationPlayState: isHovered ? 'paused' : 'running',
         }}
       >
-        {/* Floating Animation Layer */}
-        <div className="relative animate-robot-float">
+        {/* Interactive Speech Hint Bubble on Hover */}
+        <div
+          className={`absolute -top-7 z-30 transition-all duration-200 pointer-events-none ${
+            isHovered ? 'opacity-100 scale-100 -translate-y-1' : 'opacity-0 scale-90 translate-y-1'
+          }`}
+        >
+          <div className="px-2.5 py-0.5 rounded-full bg-blue-600 text-white text-[10px] font-black shadow-md border border-blue-400 whitespace-nowrap flex items-center gap-1">
+            <span>Click to chat!</span>
+            <span>💬</span>
+          </div>
+        </div>
+
+        {/* Walking Step Waddle & Bounce Layer */}
+        <div
+          className="animate-robot-waddle relative flex flex-col items-center"
+          style={{
+            animationPlayState: isHovered ? 'paused' : 'running',
+          }}
+        >
           {/* Glowing Cyan Antenna Beacon Pulse */}
-          <div className="absolute top-[4%] left-[51%] -translate-x-1/2 -translate-y-1/2 pointer-events-none z-20">
-            <span className="relative flex h-3.5 w-3.5">
+          <div className="absolute top-[3%] left-[51%] -translate-x-1/2 -translate-y-1/2 pointer-events-none z-20">
+            <span className="relative flex h-3 w-3">
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-cyan-400 opacity-75"></span>
-              <span className="relative inline-flex rounded-full h-3.5 w-3.5 bg-cyan-300 shadow-[0_0_12px_#38bdf8]"></span>
+              <span className="relative inline-flex rounded-full h-3 w-3 bg-cyan-300 shadow-[0_0_10px_#38bdf8]"></span>
             </span>
           </div>
 
@@ -54,21 +54,13 @@ export const Robot3D: React.FC<Robot3DProps> = ({ className = '', onClick }) => 
           <img
             src="/superhero-robot.png"
             alt="Agent 69 Superhero Robot Sentinel"
-            className="h-36 sm:h-40 md:h-44 w-auto object-contain drop-shadow-[0_12px_18px_rgba(30,58,138,0.22)] transition-all duration-300 group-hover:drop-shadow-[0_18px_26px_rgba(37,99,235,0.35)] pointer-events-none"
+            className="h-32 sm:h-36 md:h-40 w-auto object-contain drop-shadow-[0_10px_16px_rgba(30,58,138,0.22)] transition-transform duration-300 group-hover:scale-105 pointer-events-none"
             loading="eager"
           />
         </div>
 
-        {/* Dynamic Ground Contact Shadow */}
-        <div
-          className="w-24 sm:w-28 h-2.5 rounded-full bg-blue-950/20 blur-xs mt-0.5 transition-all duration-300"
-          style={{
-            transform: isHovered
-              ? `scale(${0.9 + Math.abs(mouseOffset.x) * 0.01}) translate3d(${mouseOffset.x * 0.2}px, 0, 0)`
-              : 'scale(1)',
-            opacity: isHovered ? 0.28 : 0.18,
-          }}
-        />
+        {/* Dynamic Ground Contact Shadow Moving with Feet */}
+        <div className="w-20 sm:w-24 h-2 rounded-full bg-blue-950/20 blur-xs mt-0.5 animate-pulse" />
       </div>
     </div>
   );

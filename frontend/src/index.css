@@ -743,17 +743,61 @@ tr {
   }
 }
 
-.animate-robot-walk,
-.animate-robot-patrol {
+@keyframes robotWalkRightToLeft {
+  0% {
+    left: calc(100% - 110px);
+    transform: scaleX(-1);
+  }
+  3% {
+    left: calc(100% - 110px);
+    transform: scaleX(-1);
+  }
+  47% {
+    left: 10px;
+    transform: scaleX(-1);
+  }
+  50% {
+    left: 10px;
+    transform: scaleX(1);
+  }
+  53% {
+    left: 10px;
+    transform: scaleX(1);
+  }
+  97% {
+    left: calc(100% - 110px);
+    transform: scaleX(1);
+  }
+  100% {
+    left: calc(100% - 110px);
+    transform: scaleX(-1);
+  }
+}
+
+@keyframes robotWalkWaddle {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-5px) rotate(2deg);
+  }
+  50% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  75% {
+    transform: translateY(-5px) rotate(-2deg);
+  }
+}
+
+.animate-robot-walk-loop {
   position: absolute;
   bottom: 4px;
-  animation: robotWalkPatrol 9s linear infinite;
+  animation: robotWalkRightToLeft 8.5s linear infinite;
   will-change: left, transform;
 }
 
-.animate-robot-step,
-.animate-robot-bob {
-  animation: robotStepBounce 0.85s ease-in-out infinite;
+.animate-robot-waddle {
+  animation: robotWalkWaddle 0.7s ease-in-out infinite;
   will-change: transform;
 }
 
