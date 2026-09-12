@@ -97,6 +97,14 @@ export const studentsApi = {
     const res = await api.get(`/students/${id}/signals`);
     return res.data;
   },
+  getMongoStatus: async () => {
+    const res = await api.get('/students/mongo-status');
+    return res.data;
+  },
+  syncAllToMongo: async () => {
+    const res = await api.post('/students/sync-all-to-mongo');
+    return res.data;
+  },
 };
 
 export const alertsApi = {

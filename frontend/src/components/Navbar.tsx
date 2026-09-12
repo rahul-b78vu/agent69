@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { LogOut, Play, Loader2, Menu } from 'lucide-react';
+import { LogOut, Play, Loader2, Menu, UserPlus, Database } from 'lucide-react';
 import { useAuth } from '../contexts/AuthContext';
 import { RunAgentModal } from './RunAgentModal';
+import { AddStudentModal } from './AddStudentModal';
 
 interface NavbarProps {
   onToggleSidebar?: () => void;
@@ -10,6 +11,7 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({ onToggleSidebar }) => {
   const { user, logout } = useAuth();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isAddStudentOpen, setIsAddStudentOpen] = useState(false);
 
   const primaryRole = user?.roles?.[0]?.name || 'USER';
 
@@ -52,6 +54,22 @@ export const Navbar: React.FC<NavbarProps> = ({ onToggleSidebar }) => {
             <span className="whitespace-nowrap">Run Agent</span>
           </button>
 
+          {/* Input Student Data Button with Mongo Compass Sync */}
+          <button
+            id="navbar-btn-add-student"
+            onClick={() => setIsAddStudentOpen(true)}
+            className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white rounded-xl text-xs font-black border border-slate-700 shadow-md hover:shadow-lg transition-all duration-200 active:scale-95 cursor-pointer shrink-0"
+            title="Input student data and sync directly to MongoDB Compass"
+          >
+            <UserPlus className="w-3.5 h-3.5 text-blue-400" />
+            <span className="hidden sm:inline whitespace-nowrap">+ Input Student Data</span>
+            <span className="sm:hidden whitespace-nowrap">+ Input</span>
+            <span className="inline-flex items-center gap-1 bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 px-1.5 py-0.5 rounded text-[10px] font-extrabold">
+              <Database className="w-2.5 h-2.5 text-emerald-400" />
+              Mongo
+            </span>
+          </button>
+
           {/* AI Monitoring Active Status */}
           <div className="hidden sm:inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50/90 border border-emerald-200/80 text-xs font-semibold text-emerald-800 shadow-2xs shrink-0">
             <span className="relative flex h-2 w-2">
@@ -89,8 +107,17 @@ export const Navbar: React.FC<NavbarProps> = ({ onToggleSidebar }) => {
         </div>
       </header>
 
-      {/* Trigger Modal */}
+      {/* Trigger Pipeline Modal */}
       <RunAgentModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+
+      {/* Input Student Data Modal with MongoDB Compass Live Sync */}
+      <AddStudentModal
+        isOpen={isAddStudentOpen}
+        onClose={() => setIsAddStudentOpen(false)}
+        onStudentAdded={() => {
+          window.dispatchEvent(new CustomEvent('student-added'));
+        }}
+      />
     </>
   );
 };

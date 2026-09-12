@@ -24,6 +24,14 @@ export const Students: React.FC = () => {
     loadStudents();
   }, [selectedDept]);
 
+  useEffect(() => {
+    const handleStudentAdded = () => {
+      loadStudents();
+    };
+    window.addEventListener('student-added', handleStudentAdded);
+    return () => window.removeEventListener('student-added', handleStudentAdded);
+  }, []);
+
   const loadStudents = async () => {
     setLoading(true);
     try {

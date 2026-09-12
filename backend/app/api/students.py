@@ -290,6 +290,67 @@ def list_students(
     return results
 
 
+@router.get("/mongo-status")
+def get_mongo_status(current_user: User = Depends(get_current_user)):
+    """Check connection to local MongoDB Compass and count documents."""
+    try:
+        from pymongo import MongoClient
+        client = MongoClient("mongodb://localhost:27017/", serverSelectionTimeoutMS=1500)
+        info = client.server_info()
+        db = client["agent69_db"]
+        collections = db.list_collection_names()
+        student_count = db["students"].count_documents({})
+        latest = db["students"].find_one(sort=[("_id", -1)])
+        latest_code = latest.get("student_code") if latest else None
+        return {
+            "connected": True,
+            "uri": "mongodb://localhost:27017",
+            "database": "agent69_db",
+            "server_version": info.get("version", "unknown"),
+            "collections_count": len(collections),
+            "students_count": student_count,
+            "latest_student_code": latest_code,
+            "message": "MongoDB Compass is running locally and connected to agent69_db.",
+        }
+    except Exception as e:
+        return {
+            "connected": False,
+            "uri": "mongodb://localhost:27017",
+            "database": "agent69_db",
+            "error": str(e),
+            "message": "Unable to connect to local MongoDB on port 27017.",
+        }
+
+
+@router.post("/sync-all-to-mongo")
+def sync_all_to_mongo_endpoint(
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user),
+):
+    """Sync all SQLite tables to MongoDB Compass agent69_db collections."""
+    import subprocess
+    import sys
+    from pathlib import Path
+
+    script_path = Path(__file__).resolve().parents[2] / "export_to_mongo.py"
+    if not script_path.exists():
+        raise HTTPException(status_code=404, detail="export_to_mongo.py script not found")
+
+    res = subprocess.run([sys.executable, str(script_path)], capture_output=True, text=True)
+    if res.returncode != 0:
+        raise HTTPException(status_code=500, detail=f"Sync failed: {res.stderr}")
+
+    from pymongo import MongoClient
+    client = MongoClient("mongodb://localhost:27017/", serverSelectionTimeoutMS=1500)
+    mongo_db = client["agent69_db"]
+    return {
+        "success": True,
+        "collections_synced": len(mongo_db.list_collection_names()),
+        "students_in_mongo": mongo_db["students"].count_documents({}),
+        "message": "All database records successfully synced to MongoDB Compass!",
+    }
+
+
 @router.get("/{student_id}", response_model=StudentDetailOut)
 def get_student_detail(
     student_id: int,
