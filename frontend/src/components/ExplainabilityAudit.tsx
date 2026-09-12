@@ -216,54 +216,68 @@ export const ExplainabilityAudit: React.FC<ExplainabilityAuditProps> = ({ alert 
     const s = strength.toUpperCase();
     if (s === 'STRONG') {
       return (
-        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-rose-50 text-rose-700 border border-rose-200">
+        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-black tracking-wide bg-gradient-to-r from-rose-50 to-red-50 text-rose-700 border border-rose-200/90 shadow-2xs ring-2 ring-rose-500/10">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-rose-600"></span>
+          </span>
           STRONG DEVIATION
         </span>
       );
     }
     if (s === 'MODERATE') {
       return (
-        <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-amber-50 text-amber-700 border border-amber-200">
+        <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-black tracking-wide bg-gradient-to-r from-amber-50 to-yellow-50 text-amber-700 border border-amber-200/90 shadow-2xs ring-2 ring-amber-500/10">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+          </span>
           MODERATE DEVIATION
         </span>
       );
     }
     return (
-      <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-blue-50 text-blue-700 border border-blue-200">
+      <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-black tracking-wide bg-gradient-to-r from-blue-50 to-sky-50 text-blue-700 border border-blue-200/90 shadow-2xs">
+        <span className="w-2 h-2 rounded-full bg-blue-500"></span>
         MILD DEVIATION
       </span>
     );
   };
 
   return (
-    <div className="bg-white rounded-2xl border border-slate-200 shadow-sm overflow-hidden transition-all">
+    <div className="explain-audit-shell">
       {/* Header Bar */}
-      <div className="p-5 md:p-6 bg-gradient-to-r from-slate-50 via-white to-blue-50/30 border-b border-slate-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+      <div className="p-5 md:p-6 bg-gradient-to-r from-slate-50/90 via-white to-blue-50/40 border-b border-slate-200/80 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
         <div className="flex items-start gap-3.5">
-          <div className="w-10 h-10 rounded-xl bg-blue-600/10 border border-blue-500/20 text-blue-600 flex items-center justify-center shrink-0 shadow-xs">
-            <Sparkles className="w-5 h-5" />
+          <div className="relative flex items-center justify-center w-11 h-11 rounded-2xl bg-gradient-to-br from-blue-600 via-indigo-600 to-blue-700 text-white shadow-md shadow-blue-500/25 shrink-0 group">
+            <Sparkles className="w-5 h-5 animate-pulse" />
+            <div className="absolute -inset-0.5 rounded-2xl bg-blue-500/20 blur-xs -z-10" />
           </div>
           <div>
             <div className="flex items-center gap-2 flex-wrap">
-              <h3 className="font-bold text-slate-900 text-base">Why This Alert Was Generated</h3>
-              <span className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-blue-100 text-blue-800 uppercase tracking-wide">
+              <h3 className="font-extrabold text-slate-900 text-base tracking-tight">Why This Alert Was Generated</h3>
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-blue-50 text-blue-700 border border-blue-200/90 uppercase tracking-wider shadow-2xs">
+                <span className="relative flex h-1.5 w-1.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-blue-600"></span>
+                </span>
                 Explainability Audit
               </span>
             </div>
-            <p className="text-xs text-slate-500 mt-0.5">
+            <p className="text-xs text-slate-500 mt-1 font-medium">
               Deterministic multi-signal correlation evaluated strictly against personal historical baseline
             </p>
           </div>
         </div>
 
         {/* View Mode Toggle & Copy */}
-        <div className="flex items-center gap-2 self-start sm:self-auto">
-          <div className="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200/80 text-xs">
+        <div className="flex items-center gap-2.5 self-start sm:self-auto">
+          <div className="flex items-center bg-slate-100/90 p-1 rounded-xl border border-slate-200 text-xs shadow-inner">
             <button
               onClick={() => setViewMode('VISUAL')}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-semibold transition-all cursor-pointer ${
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-bold transition-all cursor-pointer ${
                 viewMode === 'VISUAL'
-                  ? 'bg-white text-blue-700 shadow-xs'
+                  ? 'bg-white text-blue-700 shadow-sm'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
@@ -272,9 +286,9 @@ export const ExplainabilityAudit: React.FC<ExplainabilityAuditProps> = ({ alert 
             </button>
             <button
               onClick={() => setViewMode('RAW')}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-semibold transition-all cursor-pointer ${
+              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg font-bold transition-all cursor-pointer ${
                 viewMode === 'RAW'
-                  ? 'bg-white text-blue-700 shadow-xs'
+                  ? 'bg-white text-blue-700 shadow-sm'
                   : 'text-slate-600 hover:text-slate-900'
               }`}
             >
@@ -286,7 +300,7 @@ export const ExplainabilityAudit: React.FC<ExplainabilityAuditProps> = ({ alert 
           <button
             onClick={handleCopyRaw}
             title="Copy audit explainability text"
-            className="p-2 text-slate-500 hover:text-slate-800 bg-slate-50 hover:bg-slate-100 rounded-xl border border-slate-200/80 transition-all cursor-pointer"
+            className="p-2 text-slate-500 hover:text-slate-800 bg-white hover:bg-slate-50 rounded-xl border border-slate-200/90 transition-all cursor-pointer shadow-2xs hover:border-slate-300"
           >
             {copied ? <Check className="w-4 h-4 text-emerald-600" /> : <Copy className="w-4 h-4" />}
           </button>
@@ -300,69 +314,100 @@ export const ExplainabilityAudit: React.FC<ExplainabilityAuditProps> = ({ alert 
             {/* Contributing Signals Grid */}
             <div className="space-y-4">
               <div className="flex items-center justify-between">
-                <span className="text-xs font-bold uppercase tracking-wider text-slate-400">
-                  Contributing Signals &amp; Deviation Gauges ({parsed.signals.length} Active)
-                </span>
-                <span className="text-[11px] text-slate-500">Compared to individual self-baseline</span>
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-black uppercase tracking-wider text-slate-500">
+                    Contributing Signals &amp; Deviation Gauges
+                  </span>
+                  <span className="px-2 py-0.5 rounded-full text-[10px] font-black bg-blue-100/70 text-blue-700 border border-blue-200">
+                    {parsed.signals.length} ACTIVE
+                  </span>
+                </div>
+                <span className="text-[11px] text-slate-400 font-medium">Compared to individual self-baseline</span>
               </div>
 
               <div className="grid grid-cols-1 gap-4">
                 {parsed.signals.map((sig, idx) => {
                   const isNegative = sig.deviationNum !== undefined ? sig.deviationNum < 0 : false;
+                  const severityClass = sig.strength?.toLowerCase().includes('strong')
+                    ? 'severity-strong'
+                    : sig.strength?.toLowerCase().includes('moderate')
+                    ? 'severity-moderate'
+                    : 'severity-mild';
+
+                  const curPercent = sig.currentNum !== undefined ? Math.min(100, Math.max(0, sig.currentNum)) : 0;
+                  const basePercent = sig.baselineNum !== undefined ? Math.min(100, Math.max(0, sig.baselineNum)) : 0;
+                  const deficit = sig.baselineNum !== undefined && sig.currentNum !== undefined ? sig.baselineNum - sig.currentNum : 0;
+
                   return (
                     <div
                       key={idx}
-                      className="bg-slate-50/70 hover:bg-slate-50/90 rounded-xl border border-slate-200/90 p-4 sm:p-5 transition-all space-y-3.5 hover:border-blue-300 hover:shadow-xs"
+                      className={`explain-signal-card ${severityClass} p-4 sm:p-5 space-y-4`}
                     >
                       {/* Signal Header */}
-                      <div className="flex flex-wrap items-center justify-between gap-2">
-                        <div className="flex items-center gap-2.5">
-                          <div className="p-2 rounded-lg bg-white border border-slate-200/80 shadow-xs">
+                      <div className="flex flex-wrap items-center justify-between gap-3 pl-1">
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 rounded-xl bg-white border border-slate-200/90 shadow-2xs flex items-center justify-center shrink-0">
                             {getSignalIcon(sig.name)}
                           </div>
                           <div>
-                            <span className="font-bold text-slate-900 text-sm">{sig.name}</span>
-                            <span className="text-[11px] text-slate-400 ml-2 font-normal">
-                              Evaluated Parameter
+                            <div className="flex items-center gap-2">
+                              <span className="font-extrabold text-slate-900 text-base">{sig.name}</span>
+                              <span className="px-2 py-0.5 rounded-md text-[10px] font-bold bg-slate-100 text-slate-600 border border-slate-200/60">
+                                Evaluated Parameter
+                              </span>
+                            </div>
+                            <span className="text-[11px] text-slate-400 block mt-0.5">
+                              Dynamic behavioral trajectory
                             </span>
                           </div>
                         </div>
 
                         <div className="flex items-center gap-2">
                           {getStrengthBadge(sig.strength)}
-                          <span className="px-2.5 py-0.5 rounded-full text-[11px] font-bold bg-indigo-50 text-indigo-700 border border-indigo-200">
+                          <span className="inline-flex items-center gap-1 px-3 py-1 rounded-full text-[11px] font-extrabold bg-indigo-50/90 text-indigo-700 border border-indigo-200/80 shadow-2xs">
+                            <Activity className="w-3 h-3 text-indigo-500" />
                             +{sig.weight} pts impact
                           </span>
                         </div>
                       </div>
 
                       {/* 3-Column Metrics Comparison Strip */}
-                      <div className="grid grid-cols-3 gap-2 sm:gap-4 bg-white p-3.5 rounded-xl border border-slate-200/70">
+                      <div className="grid grid-cols-3 gap-2 sm:gap-3 bg-slate-50/80 p-3.5 rounded-xl border border-slate-200/80">
                         {/* Baseline */}
-                        <div className="space-y-0.5">
-                          <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">
+                        <div className="space-y-1 bg-white p-3 rounded-lg border border-slate-200/70 shadow-2xs">
+                          <span className="text-[10px] font-black uppercase tracking-wider text-slate-400 block">
                             Personal Baseline
                           </span>
-                          <span className="text-base sm:text-lg font-bold text-slate-800">
+                          <span className="text-xl sm:text-2xl font-black text-slate-800 tracking-tight block">
                             {sig.baseline}
                           </span>
-                          <span className="text-[10px] text-slate-500 block">Historical benchmark</span>
+                          <span className="text-[10px] text-slate-400 font-medium block">Historical benchmark</span>
                         </div>
 
                         {/* Observed Change / Deviation */}
-                        <div className="space-y-0.5 border-x border-slate-100 px-2 sm:px-4 text-center">
-                          <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">
+                        <div
+                          className={`space-y-1 p-3 rounded-lg border shadow-2xs text-center relative overflow-hidden ${
+                            isNegative
+                              ? 'bg-gradient-to-b from-rose-50/90 to-rose-100/50 border-rose-200/90 text-rose-900'
+                              : 'bg-gradient-to-b from-emerald-50/90 to-emerald-100/50 border-emerald-200/90 text-emerald-900'
+                          }`}
+                        >
+                          <span
+                            className={`text-[10px] font-black uppercase tracking-wider block ${
+                              isNegative ? 'text-rose-500' : 'text-emerald-600'
+                            }`}
+                          >
                             Observed Deviation
                           </span>
-                          <div className="flex items-center justify-center gap-1">
+                          <div className="flex items-center justify-center gap-1.5">
                             {isNegative ? (
-                              <TrendingDown className="w-4 h-4 text-rose-600 shrink-0" />
+                              <TrendingDown className="w-5 h-5 text-rose-600 shrink-0 animate-trend-bounce" />
                             ) : (
-                              <TrendingUp className="w-4 h-4 text-emerald-600 shrink-0" />
+                              <TrendingUp className="w-5 h-5 text-emerald-600 shrink-0" />
                             )}
                             <span
-                              className={`text-base sm:text-lg font-black ${
-                                isNegative ? 'text-rose-600' : 'text-slate-800'
+                              className={`text-xl sm:text-2xl font-black tracking-tight ${
+                                isNegative ? 'text-rose-600' : 'text-emerald-700'
                               }`}
                             >
                               {sig.deviationNum !== undefined
@@ -372,66 +417,121 @@ export const ExplainabilityAudit: React.FC<ExplainabilityAuditProps> = ({ alert 
                                 : sig.deviation.split(' ')[0]}
                             </span>
                           </div>
-                          <span className="text-[10px] text-slate-500 block">Net shift vs baseline</span>
+                          <span
+                            className={`text-[10px] font-medium block ${
+                              isNegative ? 'text-rose-600/80' : 'text-emerald-700/80'
+                            }`}
+                          >
+                            Net shift vs baseline
+                          </span>
                         </div>
 
                         {/* Current Value */}
-                        <div className="space-y-0.5 text-right">
-                          <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">
+                        <div className="space-y-1 bg-white p-3 rounded-lg border border-slate-200/70 shadow-2xs text-right">
+                          <span className="text-[10px] font-black uppercase tracking-wider text-slate-400 block">
                             Current Period
                           </span>
-                          <span className="text-base sm:text-lg font-bold text-slate-900">
+                          <span className="text-xl sm:text-2xl font-black text-slate-950 tracking-tight block">
                             {sig.current}
                           </span>
-                          <span className="text-[10px] text-slate-500 block">Latest monitored cycle</span>
+                          <span className="text-[10px] text-slate-400 font-medium block flex items-center justify-end gap-1">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 inline-block animate-pulse" />
+                            Latest monitored cycle
+                          </span>
                         </div>
                       </div>
 
                       {/* Visual Comparison Gauge for Percentages */}
                       {sig.isPercent && sig.baselineNum !== undefined && sig.currentNum !== undefined && (
-                        <div className="space-y-1.5 pt-1">
-                          <div className="flex items-center justify-between text-[11px] text-slate-500 font-medium">
-                            <span className="flex items-center gap-1.5">
-                              <span className="w-2.5 h-2.5 rounded-full bg-rose-500 inline-block" />
-                              Current: {sig.currentNum.toFixed(1)}%
-                            </span>
-                            <span className="flex items-center gap-1.5">
-                              <span className="w-2.5 h-2.5 rounded-full bg-slate-400 inline-block" />
-                              Baseline: {sig.baselineNum.toFixed(1)}%
-                            </span>
+                        <div className="space-y-2 pt-1">
+                          {/* Gauge Legend */}
+                          <div className="flex items-center justify-between text-xs font-bold">
+                            <div className="flex items-center gap-1.5 text-rose-600">
+                              <span className="relative flex h-2.5 w-2.5">
+                                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-rose-400 opacity-75"></span>
+                                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-rose-500 shadow-[0_0_8px_rgba(244,63,94,0.8)]"></span>
+                              </span>
+                              <span>Current: {sig.currentNum.toFixed(1)}%</span>
+                            </div>
+
+                            {deficit > 0 && (
+                              <div className="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-md text-[10px] font-black uppercase tracking-wider bg-rose-50 text-rose-700 border border-rose-200 shadow-2xs">
+                                Deficit: -{deficit.toFixed(1)}% Gap
+                              </div>
+                            )}
+
+                            <div className="flex items-center gap-1.5 text-slate-600">
+                              <div className="w-2.5 h-2.5 rounded-xs bg-slate-800 shadow-2xs" />
+                              <span>Baseline: {sig.baselineNum.toFixed(1)}%</span>
+                            </div>
                           </div>
 
-                          <div className="relative w-full h-3 bg-slate-200/90 rounded-full overflow-hidden">
-                            {/* Current fill bar */}
-                            <div
-                              className="h-full rounded-full bg-gradient-to-r from-amber-500 to-rose-600 transition-all duration-700"
-                              style={{ width: `${Math.min(100, Math.max(0, sig.currentNum))}%` }}
-                            />
+                          {/* Gauge Bar Track */}
+                          <div className="relative w-full h-5 sm:h-6 bg-slate-100 rounded-full border border-slate-300/80 shadow-inner overflow-hidden p-0.5">
+                            {/* Background percentage tick marks */}
+                            <div className="absolute inset-0 flex justify-between px-4 items-center text-[9px] font-extrabold text-slate-300 pointer-events-none select-none z-0">
+                              <span>25%</span>
+                              <span>50%</span>
+                              <span>75%</span>
+                            </div>
 
-                            {/* Baseline flag marker */}
+                            {/* Deficit Hazard Pattern Strip */}
+                            {deficit > 0 && (
+                              <div
+                                className="absolute top-0 bottom-0 gauge-deficit-hazard z-1"
+                                style={{
+                                  left: `${curPercent}%`,
+                                  width: `${Math.max(0, basePercent - curPercent)}%`,
+                                }}
+                                title={`Deficit gap: ${deficit.toFixed(1)}% below baseline`}
+                              />
+                            )}
+
+                            {/* Current fill bar with animated shimmer */}
                             <div
-                              className="absolute top-0 bottom-0 w-1 bg-slate-800 shadow-sm z-10"
-                              style={{ left: `${Math.min(99, Math.max(1, sig.baselineNum))}%` }}
+                              className="h-full rounded-full bg-gradient-to-r from-amber-400 via-rose-500 to-red-600 shadow-[0_0_12px_rgba(244,63,94,0.5)] transition-all duration-1000 ease-out relative overflow-hidden z-10"
+                              style={{ width: `${curPercent}%` }}
+                            >
+                              {/* Inner moving light shimmer overlay */}
+                              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/45 to-transparent animate-gauge-shimmer" />
+                              {/* Glowing edge cap */}
+                              <div className="absolute right-0 top-0 bottom-0 w-2 bg-white/80 rounded-r-full shadow-[0_0_6px_#fff]" />
+                            </div>
+
+                            {/* Baseline flag marker needle & diamond pins */}
+                            <div
+                              className="absolute top-0 bottom-0 w-1 bg-slate-900 shadow-sm z-20"
+                              style={{ left: `${basePercent}%` }}
                               title={`Personal Baseline: ${sig.baselineNum}%`}
-                            />
+                            >
+                              {/* Diamond top pin */}
+                              <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 rotate-45 bg-slate-900 border border-white shadow-xs" />
+                              {/* Diamond bottom pin */}
+                              <div className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 rotate-45 bg-slate-900 border border-white shadow-xs" />
+                            </div>
                           </div>
                         </div>
                       )}
 
-                      {/* Sustained Pattern Notice */}
+                      {/* Sustained Pattern Notice Banner */}
                       {sig.sustained && (
-                        <div className="flex items-center gap-2 p-2.5 bg-amber-50/80 border border-amber-200/90 rounded-lg text-xs text-amber-900 font-medium">
-                          <AlertTriangle className="w-4 h-4 text-amber-600 shrink-0" />
-                          <span>
-                            <strong>Sustained Trend:</strong> Consistent pattern across{' '}
-                            <strong>{sig.sustained}</strong>. This indicates an enduring trend rather than a transient anomaly.
-                          </span>
+                        <div className="flex items-start gap-3 p-3.5 bg-gradient-to-r from-amber-500/10 via-amber-50/70 to-white border-l-4 border-l-amber-500 border-y border-r border-amber-200/90 rounded-xl text-xs text-amber-950 font-medium shadow-2xs">
+                          <div className="p-1 rounded-lg bg-amber-100/90 text-amber-700 border border-amber-300/80 shadow-2xs shrink-0 mt-0.5">
+                            <AlertTriangle className="w-4 h-4 animate-pulse" />
+                          </div>
+                          <div className="leading-relaxed">
+                            <strong className="font-extrabold text-amber-900">Sustained Trend:</strong> Consistent pattern across{' '}
+                            <span className="inline-flex items-center px-2 py-0.5 rounded-md font-black bg-amber-200/80 text-amber-950 border border-amber-300 shadow-2xs">
+                              {sig.sustained}
+                            </span>
+                            . This indicates an enduring trend rather than a transient anomaly.
+                          </div>
                         </div>
                       )}
 
                       {/* Evidence Description if available */}
                       {sig.description && (
-                        <p className="text-xs text-slate-600 font-normal leading-relaxed pt-1">
+                        <p className="text-xs text-slate-600 font-normal leading-relaxed pt-0.5">
                           {sig.description}
                         </p>
                       )}
@@ -443,19 +543,19 @@ export const ExplainabilityAudit: React.FC<ExplainabilityAuditProps> = ({ alert 
 
             {/* Decision Parameters Strip */}
             <div className="space-y-3 pt-2">
-              <span className="text-xs font-bold uppercase tracking-wider text-slate-400 block">
+              <span className="text-xs font-black uppercase tracking-wider text-slate-400 block">
                 Aggregated Decision Parameters
               </span>
 
               <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                <div className="bg-slate-50/80 rounded-xl border border-slate-200/80 p-3.5 text-center">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">
+                <div className="bg-slate-50/90 hover:bg-white rounded-xl border border-slate-200/90 p-3.5 text-center transition-all hover:shadow-xs hover:border-blue-300">
+                  <span className="text-[10px] font-black uppercase tracking-wider text-slate-400 block">
                     Warning Score
                   </span>
-                  <span className="text-lg font-black text-blue-700 mt-0.5 block">
+                  <span className="text-xl font-black text-blue-700 mt-0.5 block">
                     {parsed.combinedScore || `${alert.warning_score} pts`}
                   </span>
-                  <div className="w-full bg-slate-200 rounded-full h-1.5 overflow-hidden mt-1.5">
+                  <div className="w-full bg-slate-200 rounded-full h-1.5 overflow-hidden mt-2">
                     <div
                       className="h-1.5 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600"
                       style={{
@@ -465,28 +565,28 @@ export const ExplainabilityAudit: React.FC<ExplainabilityAuditProps> = ({ alert 
                   </div>
                 </div>
 
-                <div className="bg-slate-50/80 rounded-xl border border-slate-200/80 p-3.5 text-center">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block">
+                <div className="bg-slate-50/90 hover:bg-white rounded-xl border border-slate-200/90 p-3.5 text-center transition-all hover:shadow-xs hover:border-blue-300">
+                  <span className="text-[10px] font-black uppercase tracking-wider text-slate-400 block">
                     Confidence
                   </span>
-                  <span className="text-lg font-bold text-slate-900 mt-0.5 block">
+                  <span className="text-xl font-black text-slate-900 mt-0.5 block">
                     {parsed.confidence || `${Math.round(alert.confidence * 100)}%`}
                   </span>
-                  <span className="text-[10px] text-slate-500 block mt-1">Multi-signal fidelity</span>
+                  <span className="text-[10px] text-slate-500 block mt-1 font-medium">Multi-signal fidelity</span>
                 </div>
 
-                <div className="bg-slate-50/80 rounded-xl border border-slate-200/80 p-3.5 text-center flex flex-col items-center justify-center">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-1">
+                <div className="bg-slate-50/90 hover:bg-white rounded-xl border border-slate-200/90 p-3.5 text-center flex flex-col items-center justify-center transition-all hover:shadow-xs hover:border-blue-300">
+                  <span className="text-[10px] font-black uppercase tracking-wider text-slate-400 block mb-1.5">
                     Classification
                   </span>
                   <CategoryBadge category={alert.category} />
                 </div>
 
-                <div className="bg-slate-50/80 rounded-xl border border-slate-200/80 p-3.5 text-center flex flex-col items-center justify-center">
-                  <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-1">
+                <div className="bg-slate-50/90 hover:bg-white rounded-xl border border-slate-200/90 p-3.5 text-center flex flex-col items-center justify-center transition-all hover:shadow-xs hover:border-blue-300">
+                  <span className="text-[10px] font-black uppercase tracking-wider text-slate-400 block mb-1.5">
                     Suggested Routing
                   </span>
-                  <span className="font-bold text-xs text-slate-800 bg-white px-2.5 py-1 rounded-lg border border-slate-200 shadow-2xs">
+                  <span className="font-extrabold text-xs text-slate-800 bg-white px-2.5 py-1 rounded-lg border border-slate-200 shadow-2xs">
                     {parsed.recommendedResponse || `${alert.suggested_responder_role} Review`}
                   </span>
                 </div>
@@ -494,13 +594,15 @@ export const ExplainabilityAudit: React.FC<ExplainabilityAuditProps> = ({ alert 
             </div>
 
             {/* Human-in-the-Loop Protocol Card */}
-            <div className="p-4 bg-gradient-to-r from-blue-50/90 via-indigo-50/50 to-blue-50/30 rounded-xl border border-blue-200/80 text-xs text-blue-950 flex items-start gap-3 shadow-2xs">
-              <ShieldCheck className="w-5 h-5 text-blue-600 shrink-0 mt-0.5" />
+            <div className="p-4 bg-gradient-to-r from-blue-50/90 via-indigo-50/40 to-blue-50/30 rounded-xl border border-blue-200/80 text-xs text-blue-950 flex items-start gap-3 shadow-2xs">
+              <div className="p-1 rounded-lg bg-blue-100 text-blue-600 border border-blue-200 shadow-2xs shrink-0 mt-0.5">
+                <ShieldCheck className="w-4 h-4" />
+              </div>
               <div className="space-y-1">
-                <span className="font-bold block text-blue-900">
+                <span className="font-extrabold block text-blue-900">
                   Ethical Protocol &amp; Human-in-the-Loop Notice
                 </span>
-                <p className="leading-relaxed text-slate-700">
+                <p className="leading-relaxed text-slate-600 font-normal">
                   {parsed.notice ||
                     'This alert represents an observed behavioral pattern requiring qualified human review. The early-warning engine does NOT make autonomous pass/fail, disciplinary, or punitive decisions.'}
                 </p>
