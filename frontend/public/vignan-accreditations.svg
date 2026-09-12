@@ -1,0 +1,103 @@
+<svg width="520" height="130" viewBox="0 0 520 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Gradients for the 4 circular badge borders -->
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0ea5e9" />
+      <stop offset="50%" stop-color="#8b5cf6" />
+      <stop offset="100%" stop-color="#ec4899" />
+    </linearGradient>
+    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ec4899" />
+      <stop offset="50%" stop-color="#f43f5e" />
+      <stop offset="100%" stop-color="#f59e0b" />
+    </linearGradient>
+    <linearGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f97316" />
+      <stop offset="50%" stop-color="#e11d48" />
+      <stop offset="100%" stop-color="#2563eb" />
+    </linearGradient>
+    <linearGradient id="grad4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4" />
+      <stop offset="50%" stop-color="#a855f7" />
+      <stop offset="100%" stop-color="#f97316" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="1.5" stdDeviation="2" flood-opacity="0.1" />
+    </filter>
+  </defs>
+
+  <style>
+    .badge-text { font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; text-anchor: middle; }
+    .badge-circle { fill: #ffffff; stroke-width: 5; stroke-linecap: round; filter: url(#shadow); }
+  </style>
+
+  <!-- ================= BADGE 1: DSIR CERTIFIED ================= -->
+  <g transform="translate(65, 65)">
+    <circle r="56" class="badge-circle" stroke="url(#grad1)" />
+    
+    <!-- Ashoka Lion Capital Emblem Silhouette -->
+    <g transform="translate(0, -22) scale(0.75)" fill="#1e293b">
+      <path d="M-12 -12 C-14 -6 -16 2 -14 6 C-12 10 -6 12 0 12 C6 12 12 10 14 6 C16 2 14 -6 12 -12 C9 -8 5 -5 0 -5 C-5 -5 -9 -8 -12 -12 Z" />
+      <circle cx="-7" cy="-10" r="3" />
+      <circle cx="0" cy="-12" r="3.5" />
+      <circle cx="7" cy="-10" r="3" />
+      <rect x="-11" y="13" width="22" height="4" rx="1" fill="#334155" />
+      <circle cx="0" cy="20" r="3.5" stroke="#1e293b" stroke-width="1" fill="none" />
+    </g>
+
+    <!-- Text -->
+    <text y="7" class="badge-text" font-size="8" font-weight="800" fill="#0f172a" letter-spacing="0.4">DSIR CERTIFIED</text>
+    <text y="17" class="badge-text" font-size="7.5" font-weight="800" fill="#1e293b" letter-spacing="0.5">INSTITUTE</text>
+    <text y="26" class="badge-text" font-size="5.5" font-weight="600" fill="#64748b">Govt. of India</text>
+    <text y="34" class="badge-text" font-size="4.5" font-weight="600" fill="#64748b">Dept. of Scientific &amp; Ind. Res.</text>
+  </g>
+
+  <!-- ================= BADGE 2: NAAC A+ GRADE ================= -->
+  <g transform="translate(195, 65)">
+    <circle r="56" class="badge-circle" stroke="url(#grad2)" />
+
+    <!-- NAAC Text -->
+    <text y="-28" class="badge-text" font-size="14" font-weight="900" fill="#0f172a" letter-spacing="1.5">NAAC</text>
+    <text y="-18" class="badge-text" font-size="7" font-weight="700" fill="#475569" letter-spacing="0.8">ACCREDITED</text>
+
+    <!-- Big Bold A+ in Red -->
+    <text y="14" class="badge-text" font-size="34" font-weight="900" fill="#dc2626" font-family="'Arial Black', 'Impact', sans-serif">A+</text>
+    
+    <!-- Grade & Score -->
+    <text y="26" class="badge-text" font-size="7" font-weight="800" fill="#1e293b" letter-spacing="0.5">GRADE</text>
+    <text y="38" class="badge-text" font-size="8" font-weight="800" fill="#0f172a" letter-spacing="0.2">(3.49 CGPA)</text>
+  </g>
+
+  <!-- ================= BADGE 3: NIRF ACCREDITED ================= -->
+  <g transform="translate(325, 65)">
+    <circle r="56" class="badge-circle" stroke="url(#grad3)" />
+
+    <!-- NIRF Logo Elements -->
+    <g transform="translate(0, -14)">
+      <circle cx="-2" cy="-17" r="3.2" fill="#dc2626" />
+      <text x="0" y="2" class="badge-text" font-size="24" font-weight="900" fill="#1e3a8a" letter-spacing="-0.5" font-family="'Arial Black', sans-serif">nirf</text>
+      <!-- Red curve ribbon -->
+      <path d="M-22 7 C-10 14 10 14 22 7 C10 10 -10 10 -22 7 Z" fill="#dc2626" />
+    </g>
+
+    <!-- Text -->
+    <text y="17" class="badge-text" font-size="9" font-weight="700" fill="#334155" letter-spacing="0.3">Accredited</text>
+    <text y="29" class="badge-text" font-size="9" font-weight="800" fill="#1e3a8a" letter-spacing="0.2">University</text>
+  </g>
+
+  <!-- ================= BADGE 4: NBA ACCREDITED ================= -->
+  <g transform="translate(455, 65)">
+    <circle r="56" class="badge-circle" stroke="url(#grad4)" />
+
+    <!-- NBA Graphic -->
+    <g transform="translate(0, -18)">
+      <text y="6" class="badge-text" font-size="24" font-weight="900" fill="#ea580c" font-family="'Arial Black', sans-serif" letter-spacing="1">NBA</text>
+    </g>
+
+    <!-- Text -->
+    <text y="6" class="badge-text" font-size="7.5" font-weight="800" fill="#0f172a" letter-spacing="0.8">ACCREDITED</text>
+    <text y="17" class="badge-text" font-size="6.5" font-weight="700" fill="#334155" letter-spacing="0.2">CSE, ECE, EEE</text>
+    <text y="26" class="badge-text" font-size="6" font-weight="700" fill="#334155" letter-spacing="0.2">MECH &amp; BIOTECH</text>
+    <text y="35" class="badge-text" font-size="5.5" font-weight="800" fill="#ea580c" letter-spacing="0.3">TIER-1 QUALITY</text>
+  </g>
+</svg>

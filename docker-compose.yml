@@ -1,0 +1,41 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: agent69_postgres
+    restart: always
+    environment:
+      POSTGRES_DB: agent69
+      POSTGRES_USER: agent69_user
+      POSTGRES_PASSWORD: agent69_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  backend:
+    build: ./backend
+    container_name: agent69_backend
+    restart: always
+    environment:
+      - DATABASE_URL=postgresql+psycopg2://agent69_user:agent69_password@db:5432/agent69
+      - SECRET_KEY=super-secret-production-key-change-me
+      - ENV=production
+      - DEBUG=false
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+
+  frontend:
+    build: ./frontend
+    container_name: agent69_frontend
+    restart: always
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+volumes:
+  pgdata:
